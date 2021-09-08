@@ -1,0 +1,72 @@
+.overlay{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffad14;
+}
+.container{
+  background-color: black;
+}
+
+#title{
+  font-family: 'Libre Baskerville', serif;
+  font-size: 5.5vw;
+}
+
+#start{
+  font-family: 'Libre Baskerville', serif;
+  margin-top: 10px;
+
+}
+#tquestion{
+  color: white
+  -webkit-text-stroke: 1px orange;
+}
+
+#question{
+  color: white;
+  font-size: 3vw;
+  font-family: 'Libre Baskerville', serif;
+}
+
+
+.button {
+  background-color: orange;
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 80%;
+}
+#restart{
+  margin-left: 322px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+
+span{
+
+   font-family: 'Times New Roman',serif;
+   letter-spacing: 1px;
+   font-size: 3.5vw;
+   font-weight: bold;
+   background-image: linear-gradient(
+    	to right,
+    	#462523 0,
+      #cb9b51 22%,
+    	#f6e27a 45%,
+    	#f6f2c0 50%,
+    	#f6e27a 55%,
+    	#cb9b51 78%,
+    	#462523 100%
+    	);
+   color:transparent;
+   -webkit-background-clip:text;
+    -webkit-text-stroke: .1px white;
+}
