@@ -23,6 +23,7 @@
 #tquestion{
   color: white
   -webkit-text-stroke: 1px orange;
+  font-size: 3vw
 }
 
 #question{
@@ -30,6 +31,10 @@
   font-size: 3vw;
   font-family: 'Libre Baskerville', serif;
 }
+#answers{
+  font-size: 2vw;
+}
+
 
 
 .button {
@@ -45,7 +50,7 @@
   border-radius: 80%;
 }
 #restart{
-  margin-left: 322px;
+
   font-family: 'Libre Baskerville', serif;
 }
 

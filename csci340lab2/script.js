@@ -84,6 +84,7 @@ $(document).ready(function(){
             Pupper()
           }else{
             $("#pic").attr( "src", results["url"])
+            $("#pic").attr( "height", "300")
           }
 
 
