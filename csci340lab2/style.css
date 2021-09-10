@@ -21,7 +21,7 @@
 
 }
 #tquestion{
-  color: white
+  color: white;
   -webkit-text-stroke: 1px orange;
   font-size: 3vw
 }
