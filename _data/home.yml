@@ -1,0 +1,73 @@
+navbar_entries:
+  - title: about
+    url: about
+
+  - title: blog
+    url: blog
+
+  - title: coursework
+    url: coursework
+
+  - title: work experience
+    url: work_experience
+
+
+project_entries:
+  - title: Banana Bonanza
+    url: https://github.com/connorescajeda/Banana-Bonanza
+    desc: A incremental game about bananas taking over the world
+
+  - title: Restaurant Simulator
+    url: overview-post
+    desc: Haven't put it in yet
+
+  - title: Maybe GIS Portfolio?
+    url: overview-post
+    desc: Need to do some more work on this
+
+
+#old_project_entries:
+
+
+footer_entries:
+  - title: linked in
+    url: https://www.linkedin.com/in/connor-escajeda-b1a85a202/
+
+  - title: twitter
+    url: https://twitter.com/connor_escajeda
+
+  - title: github
+    url: https://github.com/connorescajeda
+
+
+misc_entries:
+  - title: this is an example vertical list
+    url: false
+
+  - title: you can show or hide using a boolean flag in _config.yml
+    url: false
+
+  - title: and you can add data in _data/home.yml
+    url: false
+
+  - title: Blog posts
+    post_list: true
+    url: false
+
+  - title: moonwalk on the Internet
+    url: false
+    entries:
+      - title: on Github
+        url: https://github.com/abhinavs/moonwalk
+
+      - title: originally built for abhinav's homepage
+        url: https://www.abhinav.co
+
+      - title: this list is scalable and can be nested
+        url: false
+        entries:
+          - title: this is nested inside a nested list
+            url: false
+
+          - title: it is easy to use, see _data/home.yml to see how to configure it.
+            url: false
