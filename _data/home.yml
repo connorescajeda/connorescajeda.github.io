@@ -2,9 +2,6 @@ navbar_entries:
   - title: about
     url: about
 
-  - title: blog
-    url: blog
-
   - title: coursework
     url: coursework
 
@@ -18,12 +15,9 @@ project_entries:
     desc: A incremental game about bananas taking over the world
 
   - title: Restaurant Simulator
-    url: overview-post
-    desc: Haven't put it in yet
+    url: https://github.com/connorescajeda/Restaurant_Simulator
+    desc: A hyper-realistic fast-food restaurant management game.
 
-  - title: Maybe GIS Portfolio?
-    url: overview-post
-    desc: Need to do some more work on this
 
 
 #old_project_entries:
@@ -38,6 +32,9 @@ footer_entries:
 
   - title: github
     url: https://github.com/connorescajeda
+    
+  - title: email
+    url: mailto:escajedacj@hendrix.edu
 
 
 misc_entries:
