@@ -8,6 +8,9 @@ navbar_entries:
   - title: work experience
     url: work_experience
 
+  - title: blog
+    url: blog
+
 
 project_entries:
   - title: Banana Bonanza
@@ -32,7 +35,7 @@ footer_entries:
 
   - title: github
     url: https://github.com/connorescajeda
-    
+
   - title: email
     url: mailto:escajedacj@hendrix.edu
 
