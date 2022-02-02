@@ -1,7 +1,7 @@
 ---
 layout: post
 title: First Two Weeks of Disco Tray Studios
-visible: 1
+visible: 0
 ---
 ## Week 1
 My first week of Disco Tray Studios is most likely going to be the least busy one I have for the rest of my time. I spent my time getting myself added onto the Jekyll website, where I added my picture and a short little bio as well as moved the former student working here to the alumni section. The rest of my time was spent playing and takings notes on the games on Itch.io so that I could give advice from a new eye about things that could be changed to make the game better or more UI friendly.
