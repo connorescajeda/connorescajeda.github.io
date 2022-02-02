@@ -9,7 +9,7 @@ navbar_entries:
     url: work_experience
 
   - title: blog
-    url: blog/
+    url: blog
 
 
 project_entries:
