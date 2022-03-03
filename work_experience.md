@@ -2,6 +2,10 @@
 layout: post
 title: Work Experience
 ---
+## Member of Disco Tray Studios
+I am currently working in this position and have held it since January 2022. Disco Tray Studios is a community-focused software development initiative at Hendrix College in Conway, Arkansas. We are five students led by Professor of Computer Science, Dr. Mark Goadrich. This project aims to empower students in developing interactive educational games for social good and provide opportunities for student to execute and complete longer-term software development projects that support the technological needs of the local community. During my time so far, I have been leading work on creating websites for local community clients based on their needs and requests using a variety of tools.
+
+Want to know more about what we do and what we've done? --> [Disco Tray Studios](https://discotraystudios.github.io/)
 
 ## IT Intern with PNC Bank
 I had this job from May 2021 - August 2021 and worked 40 hours a week within a professional programming team working within an AGILE development cycle on a program called "Enterprise!". Enterprise! is an advanced, integrated platform that streamlines loan servicing, asset management, loan accounting & investor reporting. I was a part of a team that was under the umbrella of client priorities where we would meet with clients and get their feedback on new features they wanted added to the software and any issues they may have encountered. We would then develop stories and assign work accordingly and then get as much done over a 2 week period before coming back together to assess. During this experience I was worked through Azure DevOps using mostly C#, VB, SQL, as well as JavaScript. I also was able to work with a large group of programmers during this internship where I was able to learn a lot of things from people who had been in the industry for 15-30 years.
