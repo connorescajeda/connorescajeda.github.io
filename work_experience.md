@@ -2,6 +2,9 @@
 layout: post
 title: Work Experience
 ---
+## Data Analyst Intern at Expedia Group
+I worked this job from May 2022 - August 2022 and worked 40 hours a week within a global team that is based out of Austin, TX. I was given my own project for my 10 weeks in the summer by a product manager. The goal being that I would work closely with him about the data I gather so that we can move in the direction that would best help the problem he wanted to solve. The problem being, how to better understand broad searchers on VRBO.com. Over the summer, I used SQL, Python, Tableau and Mixpanel to gather, analyze and present data. I used a combination of keyword search data, as well as clickstream data to create different cohorts of people that we can use as broad searchers and provide recommendations for ways that we can improve their user expierence. I worked with many people who have been in the data industry for a long time and I learned countless skills that I will carry with me to the future.
+
 ## Member of Disco Tray Studios
 I am currently working in this position and have held it since January 2022. Disco Tray Studios is a community-focused software development initiative at Hendrix College in Conway, Arkansas. We are five students led by Professor of Computer Science, Dr. Mark Goadrich. This project aims to empower students in developing interactive educational games for social good and provide opportunities for student to execute and complete longer-term software development projects that support the technological needs of the local community. During my time so far, I have been leading work on creating websites for local community clients based on their needs and requests using a variety of tools.
 
