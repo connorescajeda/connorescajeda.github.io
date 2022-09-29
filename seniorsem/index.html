@@ -1,1 +1,49 @@
-<h1> Is anyone out there? </h1>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href = "style.css">
+        <script type="text/javascript" src="scripts\jquery-3.6.1.js"></script>
+        <script type="text/javascript" src="scripts\virus.js"></script>
+        <script type="text/javascript" src="scripts\htmlInteraction.js"></script>
+        <script type="text/javascript" src="scripts\activation.js"></script>
+        <script type="text/javascript" src="scripts\tabs.js"></script>
+        <script type="text/javascript" src="scripts\main.js"></script>
+    </head>
+
+    <body>
+        <div id="page"> 
+            <!-- <div id="banner">
+                <h1 id="name"> Growth </h1>
+            </div> -->
+            <div id="tabBar" style="display:none">
+                <ul id="tabs">
+                    <li><button class="tab-0" tab="tab_growth">Growth</button></li>
+                    <li><button class="tab-1" tab="tab_evolution">Evolution</button></li>
+
+                </ul>
+            </div>
+
+            <!-- Growth Tab -->
+
+            <div id="tab_growth">
+                <h2>Growth Resources</h2>
+                <hr>
+                <span id="size"> </span> 
+                <button class="growth_button" id="evoPoints" onclick="virus.setEvoPoints();" style="visibility:hidden">Evolve</button>
+                <span id="evo"> </span> 
+            </div>
+
+
+            <!-- Evo Tab -->
+            <div id="tab_evolution">
+                <h2>Test</h2>
+                <hr>
+            </div>
+
+
+        </div>
+    </body>
+
+
+
+
+</html>
