@@ -11,7 +11,7 @@ var virus = {
     // Functions
 
     onload : function() {
-        virus.setVirusSize(14)
+        virus.setVirusSize(0)
     },
 
 
