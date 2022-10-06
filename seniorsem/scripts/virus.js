@@ -11,7 +11,7 @@ var virus = {
     // Functions
 
     onload : function() {
-        virus.setVirusSize(0)
+        virus.setVirusSize(14)
     },
 
 
@@ -25,12 +25,24 @@ var virus = {
         if (this.size >= this.evoLimit){
             this.evoPoints += 1;
             virus.setVirusSize(this.size - this.evoLimit)
-            htmlInteraction.setInnerHtml("evo", "You have" + this.evoPoints + "evolution points.")
+            htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
             this.evoLimit *= 1.43
             activate.checkTabPanel();
         }
         
+    },
+
+    useEvopoints : function(value) {
+        if (this.evoPoints >= value){
+            this.evoPoints -= value;
+            htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
+        }
+    },
+
+    setGrowthRate : function(value){
+        this.growthRate += value;
     }
+
 
 
 
