@@ -6,7 +6,10 @@
         <script type="text/javascript" src="scripts\htmlInteraction.js"></script>
         <script type="text/javascript" src="scripts\activation.js"></script>
         <script type="text/javascript" src="scripts\tabs.js"></script>
+        <script type="text/javascript" src="scripts\upgrades.js"></script>
         <script type="text/javascript" src="scripts\main.js"></script>
+        
+
     </head>
 
     <body>
@@ -32,7 +35,7 @@
                 <span id="evo"> </span> 
                 <br>
                 <br>
-                <button id= "evoPoints" onclick="virus.setEvoPoints();" class="btn effect04" data-sm-link-text="EVOLVE" target="_blank" style="visibility:hidden"><span>GROW</span></button>
+                <button id= "evoPoints" onclick="virus.setEvoPoints();" class="btn effect04" data-sm-link-text="EVOLVE"  style="visibility:hidden"><span>GROW</span></button>
                 <!-- <button class="growth_button" id="evoPoints" onclick="virus.setEvoPoints();" style="visibility:hidden">Evolve</button> -->
             </div>
         </div>
@@ -41,8 +44,12 @@
             <div id="tab_evolution">
                 <div id="leftColumn">
                     <h2>Evolution</h2>
+                    
                     <hr>
-                    <button id= "evoUpgrade1" onclick="upgrades.purchaseUpgrade();" class="btn effect04" data-sm-link-text="" target="_blank" style="visibility:hidden"><span>GROW</span></a>
+                    <div id="upgradeList">
+                        
+                    </div>
+                  
                 </div>
                 <div id="middleColumn">
                     <h2>Growth</h2>

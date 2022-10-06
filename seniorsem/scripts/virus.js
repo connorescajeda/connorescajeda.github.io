@@ -32,7 +32,7 @@ var virus = {
         
     },
 
-    useEvopoints : function(value) {
+    useEvoPoints : function(value) {
         if (this.evoPoints >= value){
             this.evoPoints -= value;
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")

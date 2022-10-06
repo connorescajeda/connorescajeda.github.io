@@ -8,6 +8,8 @@ var main = {
 
     secInterval : function(){
         virus.setVirusSize(virus.size + virus.growthRate);
+        manageUpgrades(growUpgrades, activeGrow)
+        manageUpgrades(evolveUpgrades, activeEvo)
     }
     
 }
