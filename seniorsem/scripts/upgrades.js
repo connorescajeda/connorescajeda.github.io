@@ -3,14 +3,17 @@ var evolveUpgrades = []
 var activeGrow = []
 var activeEvo = []
 
-
+sizeBoost = 0
+powerBoost = 0
+speedBoost = 0
 
 // Model of upgrades comes from the game Universal Paperclips
 var growUpgrade1 = {
     id: "growUpgrade1",
     title: "GROW MORE",
-    priceTag: "(1 Evolution Point)",
-    description: "Increases amount of size gained per second.",
+    priceTag: "(1 EP)",
+    description: "Increases size gained per second.",
+    list: "upgradeList1",
     trigger: function(){return virus.evoPoints > 0},
     uses: 1,
     cost: function(){return virus.evoPoints >= 1 },
@@ -18,10 +21,9 @@ var growUpgrade1 = {
     element: null,
     effect: function(){
         growUpgrade1.flag = 1;
-        //displayMessage("AutoClippper performance boosted by 25%");
         virus.useEvoPoints(1)
         virus.setGrowthRate(1)
-        //boostLvl = 1;
+        sizeBoost = 1;
         growUpgrade1.element.parentNode.removeChild(growUpgrade1.element);
         var index = activeGrow.indexOf(growUpgrade1);
         activeGrow.splice(index, 1);
@@ -30,8 +32,34 @@ var growUpgrade1 = {
     
 growUpgrades.push(growUpgrade1);
 
-function manageUpgrades(upgrades, activeUpgrades){
-    
+
+
+var evoUpgrade1 = {
+    id: "evoUpgrade1",
+    title: "MORE POWER",
+    priceTag: "(1 EP)",
+    description: "Begin gaining power",
+    list: "upgradeList2",
+    trigger: function(){return virus.evoPoints > 0},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 1 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        evoUpgrade1.flag = 1;
+        virus.useEvoPoints(1)
+        virus.setPower(1)
+        powerBoost = 1;
+        evoUpgrade1.element.parentNode.removeChild(evopgrade1.element);
+        var index = activeEvo.indexOf(evoUpgrade1);
+        activeEvo.splice(index, 1);
+    }
+}
+
+evolveUpgrades.push(evoUpgrade1)
+
+
+function manageUpgrades(upgrades, activeUpgrades,){
     for(var i = 0; i < upgrades.length; i++){
         if (upgrades[i].trigger() && (upgrades[i].uses > 0)){
             displayUpgrades(upgrades[i]);
@@ -58,19 +86,17 @@ function displayUpgrades(upgrade){
     
     upgrade.element.onclick = function(){upgrade.effect()};
     
-    upgrade.element.setAttribute("class", "btn effect04");
-    upgrade.element.setAttribute("data-sm-link-text", "GROW")
-    document.getElementById("upgradeList").appendChild(upgrade.element, upgradeList.firstChild);
+    upgrade.element.setAttribute("class", "btn-upgrade");
+    //upgrade.element.setAttribute("data-sm-link-text", "GROW")
+
+    document.getElementById(upgrade.list).appendChild(upgrade.element, upgrade.list.firstChild);
     
     var span = document.createElement("span");
     span.style.fontWeight = "bold";
     upgrade.element.appendChild(span);
     
     var title = document.createTextNode(upgrade.title);
-    span.appendChild(title);   
-    
-    var hr = document.createElement("BR");
-    upgrade.element.appendChild(hr);   
+    span.appendChild(title);      
     
     var cost = document.createTextNode(upgrade.priceTag);
     upgrade.element.appendChild(cost);
