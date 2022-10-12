@@ -1,0 +1,38 @@
+.btn-5 {
+    $btn-color: random-color($max:200);
+    $btn-color-dark: shade($btn-color, 40%);
+    color: tint($btn-color);
+    @include triangle(up-right, 0, $btn-color-dark, true);
+    @include triangle(down-left, 0, $btn-color-dark, true, before);
+  
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 0 solid;
+      transform: rotate(360deg);
+    }
+    
+    &:before {
+      bottom: 0;
+      left: 0;
+      border-color: transparent transparent transparent $btn-color-dark;
+    }
+  
+    &:after {
+      top: 0;
+      right: 0;
+      border-color: transparent $btn-color-dark transparent transparent;
+    }
+  
+    &:hover {
+      color: tint($btn-color, 75%);
+      
+      &:before,
+      &:after {
+        border-width: $btn-height $btn-width*1.05;
+      }
+    }
+  }
