@@ -95,7 +95,7 @@ ul {
     cursor: pointer;
     font-size: 14px;
     font-weight: 400;
-    line-height: 45px;
+    min-height: 75px;
     max-height: 100px;
     max-width: 300px;
     position: relative;
@@ -103,6 +103,7 @@ ul {
     width: 100%;
     text-align: center;
     outline: solid  2px #000;
+    margin-bottom: 10px;
   }
   
   
@@ -111,8 +112,8 @@ ul {
     cursor: pointer;
     font-size: 14px;
     font-weight: 400;
-    line-height: 45px;
     max-width: 160px;
+
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -128,6 +129,7 @@ ul {
     --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
     display: var(--uismLinkDisplay);
     color: #000;
+    line-height: 45px;
     outline: solid  2px #000;
     position: relative;
     transition-duration: 0.4s;
