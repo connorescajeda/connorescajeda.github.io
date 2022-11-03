@@ -27,22 +27,30 @@
             </div>
 
             <!-- Growth Tab -->
-        <div id="leftColumn">
             <div id="tab_growth">
-                <h2>Growth Resources</h2>
-                <hr>
-                <span id="size"> </span> 
-                <br>
-                <span id="evo"> </span> 
-                <br>
-                <span id="power"> </span>
-                <br>
-                <span id="speed"> </span>
-                <br>
-                <br>
-                <button id= "evoPoints" onclick="virus.setEvoPoints();" class="btn effect04" data-sm-link-text="GROW"  style="visibility:hidden"><span>EVOLVE</span></button>
-                <!-- <button class="growth_button" id="evoPoints" onclick="virus.setEvoPoints();" style="visibility:hidden">Evolve</button> -->
-            </div>
+                <div id="leftColumn">
+                    <h2>Growth Resources</h2>
+                    <hr>
+                    <span id="size"> </span> 
+                    <br>
+                    <span id="evo"> </span> 
+                    <br>
+                    <span id="power"> </span>
+                    <br>
+                    <span id="speed"> </span>
+                    <br>
+                    <br>
+                    <button id= "evoPoints" onclick="virus.setEvoPoints();" class="btn effect04" data-sm-link-text="GROW"  style="visibility:hidden"><span>EVOLVE</span></button>
+                    <button id= "replicate" onclick="virus.replicate();" class="btn effect04" data-sm-link-text="EXTERMINATE"  style="visibility:hidden"><span>REPLICATE</span></button>
+                    <!-- <button class="growth_button" id="evoPoints" onclick="virus.setEvoPoints();" style="visibility:hidden">Evolve</button> -->
+                </div>
+                <div id ="middleColumn">
+                    <div id="replication" style="visibility:hidden">
+                        <h2>Replication</h2>
+                        
+                    </div>
+                </div>
+            </div>   
         </div>
 
             <!-- Evo Tab -->

@@ -12,6 +12,7 @@ var main = {
         manageUpgrades(growUpgrades, activeGrow)
         manageUpgrades(evolveUpgrades, activeEvo)
         virus.mutationCheck();
+        virus.replicateCheck();
     }
     
 }

@@ -169,6 +169,15 @@ ul {
     -webkit-transform: translateY(0) scale(1,1);
             transform: translateY(0) scale(1,1);
   }
-  
+  .dot {
+    height: 150px;
+    width: 150px;
+    background-color: #f0f0f0;
+    outline: solid 2px #000;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 150px;
+  }
 
 

@@ -7,6 +7,7 @@ sizeBoost = 0
 powerBoost = 0
 speedBoost = 0
 mutateBoost = 0
+replicateCount = 0
 
 // Model of upgrades comes from the game Universal Paperclips
 var growUpgrade1 = {
@@ -34,7 +35,7 @@ var growUpgrade1 = {
 growUpgrades.push(growUpgrade1);
 
 var growUpgrade2 = {
-    id: "growUpgradex",
+    id: "growUpgrade2",
     title: "GROW EVEN MORE",
     priceTag: "(10 EP)",
     description: "Doubles size gained per second.",
@@ -58,7 +59,7 @@ var growUpgrade2 = {
 growUpgrades.push(growUpgrade2);
 
 var growUpgrade3 = {
-    id: "growUpgradex",
+    id: "growUpgrade3",
     title: "CANT STOP GROWING",
     priceTag: "(40 EP)",
     description: "Doubles size gained per second.",
@@ -82,7 +83,7 @@ var growUpgrade3 = {
 growUpgrades.push(growUpgrade3);
 
 var growUpgrade4 = {
-    id: "growUpgradex",
+    id: "growUpgrade4",
     title: "MUTATE",
     priceTag: "(60 EP)",
     description: "Every 1000 size gained gives a chance for a random positive mutation of stats.",
@@ -103,6 +104,31 @@ var growUpgrade4 = {
     }
 }
 growUpgrades.push(growUpgrade4);
+
+var growUpgrade5 = {
+    id: "growUpgrade5",
+    title: "REPLICATE",
+    priceTag: "(100 EP)",
+    description: "Unlock the ability to replicate.",
+    list: "upgradeList1",
+    trigger: function(){return sizeBoost == 3},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 100 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade5.flag = 1;
+        virus.useEvoPoints(100)
+        virus.replication = true;
+        virus.replicateCheck;
+        replicateCount = 1;
+        growUpgrade5.element.parentNode.removeChild(growUpgrade5.element);
+        var index = activeGrow.indexOf(growUpgrade5);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade5);
 
 
 
