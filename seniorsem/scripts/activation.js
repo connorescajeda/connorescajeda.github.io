@@ -14,7 +14,7 @@ var activate = {
             htmlInteraction.showButton("evoPoints");
             this.enableButton("evoPoints")
         }
-        if (virus.replicate){
+        if (virus.replication){
             htmlInteraction.showButton("replicate")
             this.enableButton("replicate")
         }
