@@ -27,29 +27,31 @@ var virus = {
 
     setVirusSize : function(value) {
         this.size = Math.round(value);
-        
-        //if (document.getElementById("cell1") != null) {
-            //htmlInteraction.setInnerHtml("cell1", "Size: " + this.size)
-        //}
-        if (this.cloneSizes.length != 0 || this.cloneSizes.length != 0){
-            count = 1
-            this.cloneSizes.forEach(element => {
-                if (document.getElementById(`cell${count}`) != null) {
-                htmlInteraction.setInnerHtml(`cell${count}`, "Size: " + this.size)
-                count++;
+
+        if (this.cloneSizes.length != 0){
+            this.cloneSizes.forEach((element, index) => {
+                console.log(index)
+                if (document.getElementById(`cell${index + 1}`) != null) {
+                this.cloneSizes[index] = Math.round(value);
+                htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + Math.round(value))
+                
                 }
             }); 
             var sum = this.cloneSizes.reduce(function(a, b){
                 return a + b;
             }, 0);
-            htmlInteraction.setInnerHtml("size", "You are a size of " + sum)
-            console.log(this.cloneSizes)
-            console.log(sum)
+            virus.totalSize += (this.cloneSizes.length - 1 * virus.growthRate)
+            if (this.cloneSizes.length > 1){
+                htmlInteraction.setInnerHtml("size", "You have a total size of " + sum)
+            } else{
+                htmlInteraction.setInnerHtml("size", "You are a size of " + sum)
+            }
+            
         }
+        
         else{
             htmlInteraction.setInnerHtml("size", "You are a size of " + this.size)
-            htmlInteraction.setInnerHtml(`cell1`, "Size: " + this.size)
-
+            
         }
         
         activate.checkGrowthButtons();
@@ -128,13 +130,13 @@ var virus = {
     replicate: function() {
         num = this.cloneSizes.length 
         if (this.replicateLimit > num){
-            id = num + 2
+            id = num + 1
             var cell = {
                 id: `cell${id}`,
                 description: virus.size / 2,
                 element: null,
              }
-             this.cloneSizes.push(virus.size / 2)
+             this.cloneSizes.push(Math.round(virus.size / 2))
              this.createCell(cell)
         }
     },
@@ -144,9 +146,9 @@ var virus = {
         cell.element.setAttribute("id", cell.id)
         cell.element.setAttribute("class", "dot")
         if (cell.id != "cell1"){
-            virus.setVirusSize(virus.size / 2)
+            virus.setVirusSize(Math.round(virus.size / 2))
         }
-        var description = document.createTextNode("Size: " + cell.description);
+        var description = document.createTextNode("Size: " + Math.round(cell.description));
         cell.element.appendChild(description);
 
         document.getElementById("replication").appendChild(cell.element)

@@ -122,7 +122,7 @@ var growUpgrade5 = {
         virus.replication = true;
         virus.replicateCheck;
         replicateCount = 1;
-        virus.replicateLimit = 1
+        virus.replicateLimit = 2
         growUpgrade5.element.parentNode.removeChild(growUpgrade5.element);
         var index = activeGrow.indexOf(growUpgrade5);
         activeGrow.splice(index, 1);
