@@ -12,7 +12,7 @@ var virus = {
     speed : 0,
     mutation : false,
     mutateCount : 0,
-    replication: false,
+    replication: true,
     replicateLimit: 0,
 
 
