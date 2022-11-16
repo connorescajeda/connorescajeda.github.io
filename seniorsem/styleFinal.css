@@ -36,6 +36,12 @@ ul {
     float: left;
     width: 275px;
 }
+#rightColumn {
+  float: left;
+  width: 275px;
+  align-items: center;
+}
+
 
 
 
@@ -113,7 +119,6 @@ ul {
     font-size: 14px;
     font-weight: 400;
     max-width: 160px;
-
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -130,10 +135,13 @@ ul {
     display: var(--uismLinkDisplay);
     color: #000;
     line-height: 45px;
-    outline: solid  2px #000;
+    outline: none;
+    box-shadow: 0 0 0 1pt black;
     position: relative;
     transition-duration: 0.4s;
     overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   
   .effect04::before,
@@ -181,4 +189,25 @@ ul {
     margin-bottom: 15px;
   }
 
+#attacks{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstChildren {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1 0 25%;
+  margin: 1rem 1rem 1rem 0rem;
+}
+
+.secondChildren {
+  flex: 0 1 50%;
+  height: 50px;
+  margin:  1rem 1rem 1rem 0rem;
+  min-width: 50px;
+  max-width: 300px;
+}
 

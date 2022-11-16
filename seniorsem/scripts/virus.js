@@ -11,8 +11,8 @@ var virus = {
     power : 0,
     speed : 0,
     mutation : false,
-    mutateCount : 0,
-    replication: true,
+    mutateCount : 1,
+    replication: false,
     replicateLimit: 0,
 
 
@@ -22,24 +22,32 @@ var virus = {
     onload : function() {
         virus.setVirusSize(850)
         virus.totalSize = 850
+        this.initCombat()
     },
+
+    
 
 
     setVirusSize : function(value) {
         this.size = Math.round(value);
 
         if (this.cloneSizes.length != 0){
+
             this.cloneSizes.forEach((element, index) => {
-                console.log(index)
+                if (index == 0){
+                    this.cloneSizes[index] = Math.round(value)
+                }
                 if (document.getElementById(`cell${index + 1}`) != null) {
-                this.cloneSizes[index] = Math.round(value);
-                htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + Math.round(value))
+                    this.cloneSizes[index] = this.cloneSizes[index] + virus.growthRate
+                    htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
                 
                 }
-            }); 
+            });
+
             var sum = this.cloneSizes.reduce(function(a, b){
                 return a + b;
-            }, 0);
+            }, 0); 
+            
             virus.totalSize += (this.cloneSizes.length - 1 * virus.growthRate)
             if (this.cloneSizes.length > 1){
                 htmlInteraction.setInnerHtml("size", "You have a total size of " + sum)
@@ -133,24 +141,36 @@ var virus = {
             id = num + 1
             var cell = {
                 id: `cell${id}`,
-                description: virus.size / 2,
+                description: this.cloneSizes[0] / 2,
                 element: null,
              }
-             this.cloneSizes.push(Math.round(virus.size / 2))
+             this.cloneSizes.push(Math.round(this.cloneSizes[0] / 2 + virus.growthRate))
              this.createCell(cell)
         }
     },
 
     createCell: function(cell){
+        
         cell.element = document.createElement("span")
         cell.element.setAttribute("id", cell.id)
         cell.element.setAttribute("class", "dot")
+
         if (cell.id != "cell1"){
-            virus.setVirusSize(Math.round(virus.size / 2))
+            virus.setVirusSize(Math.round(this.cloneSizes[0] / 2))
         }
+        
         var description = document.createTextNode("Size: " + Math.round(cell.description));
         cell.element.appendChild(description);
 
         document.getElementById("replication").appendChild(cell.element)
+       
+    },
+
+    initCombat: function(){
+        htmlInteraction.showButton("enemyDisplay")
+    },
+
+    combat: function(){
+
     }
 }

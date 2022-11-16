@@ -226,13 +226,84 @@ var evoUpgrade4 = {
         evoUpgrade4.flag = 1;
         virus.useEvoPoints()
         virus.setSpeed(2)
-        speedBoost = 12
+        speedBoost = 2
         evoUpgrade4.element.parentNode.removeChild(evoUpgrade4.element);
         var index = activeEvo.indexOf(evoUpgrade4);
         activeEvo.splice(index, 1);
     }
 }
 evolveUpgrades.push(evoUpgrade4)
+
+var evoUpgrade5 = {
+    id: "evoUpgrade5",
+    title: "EVEN MORE POWER",
+    priceTag: "(4 EP)",
+    description: "Read the title",
+    list: "upgradeList2",
+    trigger: function(){return powerBoost == 2},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 4 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        evoUpgrade5.flag = 1;
+        virus.useEvoPoints(4)
+        virus.setPower(4)
+        powerBoost = 3;
+        evoUpgrade5.element.parentNode.removeChild(evoUpgrade5.element);
+        var index = activeEvo.indexOf(evoUpgrade5);
+        activeEvo.splice(index, 1);
+    }
+}
+evolveUpgrades.push(evoUpgrade5)
+
+var evoUpgrade6 = {
+    id: "evoUpgrade6",
+    title: "EVEN MORE SPEED",
+    priceTag: "(4 EP)",
+    description: "I've got the need for speed!",
+    list: "upgradeList2",
+    trigger: function(){return speedBoost == 2},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 4 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        evoUpgrade6.flag = 1;
+        virus.useEvoPoints(4)
+        virus.setSpeed(4)
+        speedBoost = 3;
+        evoUpgrade6.element.parentNode.removeChild(evoUpgrade6.element);
+        var index = activeEvo.indexOf(evoUpgrade6);
+        activeEvo.splice(index, 1);
+    }
+}
+evolveUpgrades.push(evoUpgrade6)
+
+var evoUpgrade7 = {
+    id: "evoUpgrade7",
+    title: "SURVIVE",
+    priceTag: "(25 EP)",
+    description: "Spread to survive",
+    list: "upgradeList2",
+    trigger: function(){return virus.evoPoints > 0},
+    // trigger: function(){return speedBoost == 3 && powerBoost == 3},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 25 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        evoUpgrade7.flag = 1;
+        virus.useEvoPoints(25)
+        virus.initCombat()
+        evoUpgrade7.element.parentNode.removeChild(evoUpgrade7.element);
+        var index = activeEvo.indexOf(evoUpgrade7);
+        activeEvo.splice(index, 1);
+    }
+}
+evolveUpgrades.push(evoUpgrade7)
+
+
 
 
 
