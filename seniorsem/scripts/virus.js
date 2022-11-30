@@ -17,17 +17,16 @@ var virus = {
 
 
 
+
     // Functions
 
     onload : function() {
         virus.setVirusSize(850)
         virus.totalSize = 850
-        this.initCombat()
+        //combat.initCombat()
     },
 
     
-
-
     setVirusSize : function(value) {
         this.size = Math.round(value);
 
@@ -40,14 +39,14 @@ var virus = {
                 if (document.getElementById(`cell${index + 1}`) != null) {
                     this.cloneSizes[index] = this.cloneSizes[index] + virus.growthRate
                     htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
-                
+                    
                 }
             });
 
             var sum = this.cloneSizes.reduce(function(a, b){
                 return a + b;
             }, 0); 
-            
+            this.size = sum
             virus.totalSize += (this.cloneSizes.length - 1 * virus.growthRate)
             if (this.cloneSizes.length > 1){
                 htmlInteraction.setInnerHtml("size", "You have a total size of " + sum)
@@ -166,11 +165,5 @@ var virus = {
        
     },
 
-    initCombat: function(){
-        htmlInteraction.showButton("enemyDisplay")
-    },
-
-    combat: function(){
-
-    }
+   
 }

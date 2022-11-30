@@ -8,6 +8,7 @@ powerBoost = 0
 speedBoost = 0
 mutateBoost = 0
 replicateCount = 0
+lightningCount = 0
 
 // Model of upgrades comes from the game Universal Paperclips
 var growUpgrade1 = {
@@ -130,9 +131,6 @@ var growUpgrade5 = {
 }
     
 growUpgrades.push(growUpgrade5);
-
-
-
 
 
 
@@ -295,13 +293,42 @@ var evoUpgrade7 = {
     effect: function(){
         evoUpgrade7.flag = 1;
         virus.useEvoPoints(25)
-        virus.initCombat()
+        combat.initCombat()
         evoUpgrade7.element.parentNode.removeChild(evoUpgrade7.element);
         var index = activeEvo.indexOf(evoUpgrade7);
         activeEvo.splice(index, 1);
     }
 }
 evolveUpgrades.push(evoUpgrade7)
+
+
+var evoUpgrade8 = {
+    id: "evoUpgrade8",
+    title: "Lightning Bolt",
+    priceTag: "(1 EP)",
+    description: "Begin gaining power",
+    list: "upgradeList2",
+    trigger: function(){return combat.combatFlag},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 20 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        evoUpgrade8.flag = 1;
+        virus.useEvoPoints(20)
+        var attack = {
+            name: "Lightning Bolt",
+            dmg : [10, 15],
+            cooldown : 2000,
+            uses: 15
+        }
+        combat.addAttack(attack)
+        evoUpgrade8.element.parentNode.removeChild(evoUpgrade8.element);
+        var index = activeEvo.indexOf(evoUpgrade8);
+        activeEvo.splice(index, 1);
+    }
+}
+evolveUpgrades.push(evoUpgrade8)
 
 
 

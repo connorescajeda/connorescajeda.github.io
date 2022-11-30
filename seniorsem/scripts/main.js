@@ -7,8 +7,12 @@ var main = {
     },
 
     secInterval : function(){
-        virus.setVirusSize(virus.size + virus.growthRate);
-        virus.totalSize += virus.growthRate;
+        if (combat.inBattle) {
+            combat.fight()
+        } else{
+            virus.setVirusSize(virus.size + virus.growthRate);
+            virus.totalSize += virus.growthRate;
+        }
         manageUpgrades(growUpgrades, activeGrow)
         manageUpgrades(evolveUpgrades, activeEvo)
         virus.mutationCheck();

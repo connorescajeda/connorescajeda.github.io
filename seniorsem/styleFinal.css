@@ -189,18 +189,19 @@ ul {
     margin-bottom: 15px;
   }
 
-#attacks{
+#attacksDiv{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  
 }
 
 .firstChildren {
   display: flex;
   flex-wrap: nowrap;
   flex: 1 0 25%;
-  margin: 1rem 1rem 1rem 0rem;
+  margin: 1rem 1rem 1rem 0rem
 }
 
 .secondChildren {
@@ -209,5 +210,21 @@ ul {
   margin:  1rem 1rem 1rem 0rem;
   min-width: 50px;
   max-width: 300px;
+ 
 }
 
+.attackButton {
+  font-size: 1em;
+}
+
+.attacks {
+  max-height: 66px;
+  min-height: 66px;
+  min-width: 115px;
+  max-width: 115px;
+  line-height: 30px;
+}
+
+.healthbar{
+  width: 100%;
+}

@@ -1,1 +1,24 @@
-Work on virus replication numbers
+Core things
+    Starting working on multi cell fight interaction
+        Multiple cells increase damage
+        Life off last cell
+        Cell death
+    Multiple attacks working 
+        Pestilence attack next
+    Death of enemy into next enemy
+    More upgrades, more enemies
+
+
+
+Small things
+    Implement spped/power bonus to attacks
+    Console aestheics
+        Looking prettier
+        Different colors?
+
+
+Strech goal
+    Hosts being a prestige thing?
+
+
+

@@ -8,9 +8,9 @@
         <script type="text/javascript" src="scripts\activation.js"></script>
         <script type="text/javascript" src="scripts\tabs.js"></script>
         <script type="text/javascript" src="scripts\upgrades.js"></script>
+        <script type="text/javascript" src="scripts\combat.js"></script>
         <script type="text/javascript" src="scripts\main.js"></script>
         
-
     </head>
 
     <body>
@@ -59,27 +59,42 @@
    |\ ./.\-/.\-|.|.|.|
 ~~~|.|_|.|_|.|.|.|_|.|~~~
                         </pre>
-                        <span id="enemyHP"> Health: 100/100 </span>
-                        <button id= "combat" onclick="virus.combat();" class="btn effect04" data-sm-link-text="SPREAD" ><span>SURVIVE</span></button>
-                        <div id="attacks">  
+                        <div class="healthbar">
+                            <span id="enemyHP" style="visibility:hidden"> </span>
+                        </div>
+                        <button id= "combat" onclick="combat.battleFlag();" class="btn effect04" data-sm-link-text="SPREAD"> <span>SURVIVE</span></button>
+                        <div id="attacksDiv">  
                             <div class="firstChildren">
                                 <div class="secondChildren"> 
-                                    <button id= "evoPoints" onclick="" class="btn effect04" data-sm-link-text="10/10 Casts"><span>ATTACK</span></button>
+                                    <button id="attack0Button"  onclick="combat.cast(0)" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack0"> </span></button>
                                 </div>
                                   <div class="secondChildren">
-                                    <button id= "evoPoints" onclick="" class="btn effect04" data-sm-link-text="10/10 Casts"><span>ATTACK</span></button>
+                                    <button id= "attack1Button" onclick="" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack1"> </span></button>
                                   </div>
                                 </div>
                                 <div class="firstChildren">
                                   <div class="secondChildren">
-                                    <button id= "evoPoints" onclick="" class="btn effect04" data-sm-link-text="10/10 Casts"><span>ATTACK</span></button>
+                                    <button id= "attack2Button" onclick="" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack2" > </span></button>
                                   </div>
                                   <div class="secondChildren">
-                                    <button id= "evoPoints" onclick="" class="btn effect04" data-sm-link-text="10/10 Casts"><span>ATTACK</span></button>
+                                    <button id= "attack3Button" onclick="" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack3"> </span></button>
                                   </div>
                                 </div>
                         </div>
                     </div>
+                    <div id="updateArea"> 
+                        <span id="message1"> </span>
+                        <br>
+                        <span id="message2"></span>
+                        <br>
+                        <span id="message3"></span>
+                        <br>
+                        <span id="message4"></span>
+                        <br>
+                        <span id="message5"></span>
+                        <br>
+                    </div>
+
                     
                     
                     
@@ -112,8 +127,6 @@
 
         </div>
     </body>
-
-
 
 
 </html>
