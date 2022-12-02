@@ -11,7 +11,7 @@ var combat = {
     attacks: [],
     inBattle: false,
     current_enemy: enemy1,
-    battle_enemy: enemy1,
+    enemy_health: enemy1.health,
     cooldowns: {0: true, 1: true, 2: true, 3: true},
     message1 : "",
     message2 : "",
@@ -40,14 +40,17 @@ var combat = {
     fight: function(){  
         if (this.inBattle) {
             htmlInteraction.showButton("enemyHP")
-            htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.battle_enemy.health}`)
+            htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
             if (virus.size < 0){
                 virus.size = 1
                 this.inBattle = false
-                this.displayMessages("The enemy has bested you. Grow and try again later.")              
+                this.displayMessages("The enemy has bested you. Grow and try again later.")     
+                this.current_enemy.health = this.enemy_health
+
             } else if (this.current_enemy.health < 0) {
                 this.inBattle = false
                 this.displayMessages("You have vanquished the foe. Feast.")
+
             } else if (virus.cloneSizes.length == 0 && this.current_enemy.cooldown){
                 tmp = this.current_enemy.attack0
                 attack = tmp["dmg"]
@@ -57,9 +60,39 @@ var combat = {
                 this.current_enemy.cooldown = false
                 this.displayMessages(`${tmp["desc"] + damage}.`)
                 window.setTimeout(function () {enemyCooldowns(combat.current_enemy)}, cooldown);
+
+            } else if (this.current_enemy.cooldown) {
+                tmp = this.current_enemy.attack0
+                attack = tmp["dmg"]
+                cooldown = tmp["cooldown"]
+                damage = this.getRandomInt(attack-10, attack)
+                index = virus.cloneSizes.length
+                virus.cloneSizes[index - 1] -= damage
+                this.displayMessages(`${tmp["desc"] + damage}.`)
+                this.cloneSizeCheck(index - 1)
+                this.current_enemy.cooldown = false
+                virus.virusCombat()
+                window.setTimeout(function () {enemyCooldowns(combat.current_enemy)}, cooldown);
             }
         }
         
+    },
+
+    cloneSizeCheck : function(index) {
+        if (virus.cloneSizes[index] <= 0){
+            if (index == 0){
+                virus.setVirusSize(1)
+                this.inBattle = false
+                this.displayMessages("The enemy has bested you. Grow and try again later.")    
+            } else{
+                virus.cloneSizes.pop()
+                cell = htmlInteraction.getElement(`cell${index+1}`)
+                cell.remove()
+                this.displayMessages(`You have lost one of your replicants.`)
+            }
+            
+            
+        }
     },
 
     cast: function(index){

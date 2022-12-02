@@ -14,6 +14,7 @@ var virus = {
     mutateCount : 1,
     replication: false,
     replicateLimit: 0,
+    combatSize : 0,
 
 
 
@@ -21,8 +22,8 @@ var virus = {
     // Functions
 
     onload : function() {
-        virus.setVirusSize(850)
-        virus.totalSize = 850
+        virus.setVirusSize(150)
+        virus.totalSize = 150
         //combat.initCombat()
     },
 
@@ -34,10 +35,12 @@ var virus = {
 
             this.cloneSizes.forEach((element, index) => {
                 if (index == 0){
-                    this.cloneSizes[index] = Math.round(value)
+                    this.cloneSizes[index] = this.size
                 }
                 if (document.getElementById(`cell${index + 1}`) != null) {
-                    this.cloneSizes[index] = this.cloneSizes[index] + virus.growthRate
+                    if (index > 0){
+                        this.cloneSizes[index] = this.cloneSizes[index]  + virus.growthRate
+                    }
                     htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
                     
                 }
@@ -46,12 +49,11 @@ var virus = {
             var sum = this.cloneSizes.reduce(function(a, b){
                 return a + b;
             }, 0); 
-            this.size = sum
             virus.totalSize += (this.cloneSizes.length - 1 * virus.growthRate)
             if (this.cloneSizes.length > 1){
                 htmlInteraction.setInnerHtml("size", "You have a total size of " + sum)
             } else{
-                htmlInteraction.setInnerHtml("size", "You are a size of " + sum)
+                htmlInteraction.setInnerHtml("size", "You are a size of " + this.size)
             }
             
         }
@@ -63,6 +65,20 @@ var virus = {
         
         activate.checkGrowthButtons();
     },
+
+    virusCombat : function(){
+        
+        this.cloneSizes.forEach((element, index)=>  {
+            htmlInteraction.setInnerHtml(`cell${index+1}`, "Size: " + this.cloneSizes[index])
+        });
+        var sum = this.cloneSizes.reduce(function(a, b){
+            return a + b;
+        }, 0); 
+        this.combatSize = sum
+        htmlInteraction.setInnerHtml("size", "You have a total size of " + sum)
+        
+    },
+
 
     setEvoPoints : function(){
         if (this.size >= this.evoLimit){
@@ -143,7 +159,7 @@ var virus = {
                 description: this.cloneSizes[0] / 2,
                 element: null,
              }
-             this.cloneSizes.push(Math.round(this.cloneSizes[0] / 2 + virus.growthRate))
+             this.cloneSizes.push(Math.round(this.cloneSizes[0] / 2))
              this.createCell(cell)
         }
     },
@@ -154,7 +170,8 @@ var virus = {
         cell.element.setAttribute("id", cell.id)
         cell.element.setAttribute("class", "dot")
 
-        if (cell.id != "cell1"){
+
+        if (this.cloneSizes.length > 1){
             virus.setVirusSize(Math.round(this.cloneSizes[0] / 2))
         }
         
