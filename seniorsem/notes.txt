@@ -1,24 +1,28 @@
 Core things
-    Starting working on multi cell fight interaction
-        Multiple cells increase damage
-        Life off last cell
-        Cell death
     Multiple attacks working 
         Pestilence attack next
+        ! Seems to be an issue with using this attack / probably cooldown issues
     Death of enemy into next enemy
+        ! Mostly works, add some new console messages
     More upgrades, more enemies
 
 
 
 Small things
-    Implement spped/power bonus to attacks
+    Implement speed/power bonus to attacks
+
     Console aestheics
         Looking prettier
         Different colors?
 
+    Multiple cells increase damage
 
-Strech goal
+
+Stretch goal
     Hosts being a prestige thing?
+
+
+
 
 
 

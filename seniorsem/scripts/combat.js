@@ -1,10 +1,22 @@
 var enemy1 = {
+    id : "enemy1",
     name: "Humble Farming Village",
     health: 100,
     attack0 : {"dmg" : 100, "cooldown": 3000, "desc": `The enemy threw a pitch fork and reduced your size by `},
-    cooldown: true
+    cooldown: true,
 }
 
+var enemy2 = {
+    id : "enemy2",
+    name: "Quaint Fishing Town",
+    health: 200,
+    attack0 : {"dmg" : 130, "cooldown": 2600, "desc": `The enemy hooked you with their poles and reduced your size by `},
+    cooldown: true,
+}
+
+
+
+enemies = [enemy1, enemy2]
 var combat = {
 
     combatFlag : false,
@@ -18,10 +30,12 @@ var combat = {
     message3 : "",
     message4: "",
     message5: "",
+    enemyId : 1,
 
 
     initCombat : function(){
         htmlInteraction.showButton("enemyDisplay")
+        htmlInteraction.showButton("enemy1")
         this.combatFlag = true
         this.displayMessages("You must fight to survive.")
     },
@@ -46,10 +60,14 @@ var combat = {
                 this.inBattle = false
                 this.displayMessages("The enemy has bested you. Grow and try again later.")     
                 this.current_enemy.health = this.enemy_health
+                
 
             } else if (this.current_enemy.health < 0) {
                 this.inBattle = false
                 this.displayMessages("You have vanquished the foe. Feast.")
+                htmlInteraction.setElementVisibility(this.current_enemy.id, false)
+                this.nextEnemy()
+
 
             } else if (virus.cloneSizes.length == 0 && this.current_enemy.cooldown){
                 tmp = this.current_enemy.attack0
@@ -142,6 +160,14 @@ var combat = {
         htmlInteraction.setInnerHtml("message3", htmlInteraction.getElement("message2").innerHTML)
         htmlInteraction.setInnerHtml("message2", htmlInteraction.getElement("message1").innerHTML)
         htmlInteraction.setInnerHtml("message1", msg)
+    },
+    nextEnemy : function(){
+        this.enemyId += 1
+        this.current_enemy = enemies[this.enemyId - 1]
+        this.enemy_health = this.current_enemy.health
+        htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
+        htmlInteraction.showButton(this.current_enemy.id)
+        
     }
 
 

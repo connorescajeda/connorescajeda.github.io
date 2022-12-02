@@ -305,8 +305,8 @@ evolveUpgrades.push(evoUpgrade7)
 var evoUpgrade8 = {
     id: "evoUpgrade8",
     title: "Lightning Bolt",
-    priceTag: "(1 EP)",
-    description: "Begin gaining power",
+    priceTag: "(20 EP)",
+    description: "Harness your speed to create lighting.",
     list: "upgradeList2",
     trigger: function(){return combat.combatFlag},
     uses: 1,
@@ -318,7 +318,7 @@ var evoUpgrade8 = {
         virus.useEvoPoints(20)
         var attack = {
             name: "Lightning Bolt",
-            dmg : [10, 15],
+            dmg : [50, 55],
             cooldown : 2000,
             uses: 15
         }
@@ -329,6 +329,34 @@ var evoUpgrade8 = {
     }
 }
 evolveUpgrades.push(evoUpgrade8)
+
+var evoUpgrade9 = {
+    id: "evoUpgrade9",
+    title: "Toxic Cloud",
+    priceTag: "(20 EP)",
+    description: "Harness your power to create toxins.",
+    list: "upgradeList2",
+    trigger: function(){return combat.combatFlag},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 20 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        evoUpgrade9.flag = 1;
+        virus.useEvoPoints(20)
+        var attack = {
+            name: "Toxic Cloud",
+            dmg : [10 * powerBoost, 15 * powerBoost],
+            cooldown : 2000,
+            uses: 15
+        }
+        combat.addAttack(attack)
+        evoUpgrade9.element.parentNode.removeChild(evoUpgrade9.element);
+        var index = activeEvo.indexOf(evoUpgrade8);
+        activeEvo.splice(index, 1);
+    }
+}
+evolveUpgrades.push(evoUpgrade9)
 
 
 
