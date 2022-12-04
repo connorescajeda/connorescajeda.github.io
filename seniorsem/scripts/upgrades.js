@@ -378,7 +378,7 @@ var growUpgrade15 = {
     list: "upgradeList1",
     trigger: function(){return sizeBoost == 1},
     uses: 1,
-    cost: function(){return virus.tsize > 1000}, 
+    cost: function(){return virus.tSize > 1000}, 
     flag: 0,
     element: null,
     effect: function(){
