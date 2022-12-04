@@ -53,6 +53,7 @@
                 <div id="rightColumn">
                     <div id="enemyDisplay" style="visibility:hidden">
                         <h2>Survive</h2>
+                        <h4 id="enemyName"></h4>
                         <div id="ascii">
                             <pre id="enemy1" style="visibility:hidden">
             |   _   _
@@ -60,7 +61,7 @@
    |\ ./.\-/.\-|.|.|.|
 ~~~|.|_|.|_|.|.|.|_|.|~~~
                             </pre>
-                            <pre id="enemy2" style="visibility:hidden">
+                            <pre id="enemy2" style="display:none">
   \_/       .:'    .:'    .:'
 -=(_)=-  /\||   /\||   /\||
   / \   //\\|  //\\|  //\\|
@@ -82,15 +83,15 @@
                                     <button id="attack0Button"  onclick="combat.cast(0)" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack0"> </span></button>
                                 </div>
                                   <div class="secondChildren">
-                                    <button id= "attack1Button" onclick="" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack1"> </span></button>
+                                    <button id= "attack1Button" onclick="combat.cast(1)" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack1"> </span></button>
                                   </div>
                                 </div>
                                 <div class="firstChildren">
                                   <div class="secondChildren">
-                                    <button id= "attack2Button" onclick="" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack2" > </span></button>
+                                    <button id= "attack2Button" onclick="combat.cast(2)" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack2" > </span></button>
                                   </div>
                                   <div class="secondChildren">
-                                    <button id= "attack3Button" onclick="" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack3"> </span></button>
+                                    <button id= "attack3Button" onclick="combat.cast(3)" class="btn effect04 attacks" data-sm-link-text="" style="visibility:hidden"><span class="attackButton" id= "attack3"> </span></button>
                                   </div>
                                 </div>
                         </div>

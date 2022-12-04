@@ -9,22 +9,28 @@ speedBoost = 0
 mutateBoost = 0
 replicateCount = 0
 lightningCount = 0
+evoFactorCount = 0
+evoAmountCount = 0
 
 // Model of upgrades comes from the game Universal Paperclips
+
+
+// Size gain upgrades
+
 var growUpgrade1 = {
     id: "growUpgrade1",
     title: "GROW MORE",
-    priceTag: "(1 EP)",
+    priceTag: "(5 EP)",
     description: "Increases size gained per second.",
     list: "upgradeList1",
     trigger: function(){return virus.evoPoints > 0},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 1 },
+    cost: function(){return virus.evoPoints >= 5 },
     flag: 0,
     element: null,
     effect: function(){
         growUpgrade1.flag = 1;
-        virus.useEvoPoints(1)
+        virus.useEvoPoints(5)
         virus.setGrowthRate(1)
         sizeBoost = 1;
         growUpgrade1.element.parentNode.removeChild(growUpgrade1.element);
@@ -59,6 +65,8 @@ var growUpgrade2 = {
     
 growUpgrades.push(growUpgrade2);
 
+//
+
 var growUpgrade3 = {
     id: "growUpgrade3",
     title: "CANT STOP GROWING",
@@ -82,6 +90,11 @@ var growUpgrade3 = {
 }
     
 growUpgrades.push(growUpgrade3);
+
+
+
+
+// Mutation upgrades
 
 var growUpgrade4 = {
     id: "growUpgrade4",
@@ -108,6 +121,182 @@ growUpgrades.push(growUpgrade4);
 
 var growUpgrade5 = {
     id: "growUpgrade5",
+    title: "BETTER MUTATION",
+    priceTag: "(50 EP)",
+    description: "Better mutation odds.",
+    list: "upgradeList1",
+    trigger: function(){return mutateBoost == 1},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 50},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade5.flag = 1;
+        virus.useEvoPoints(50)
+        virus.mutateFloor = 0.65
+        mutateBoost = 2;
+        growUpgrade5.element.parentNode.removeChild(growUpgrade5.element);
+        var index = activeGrow.indexOf(growUpgrade5);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade5);
+
+var growUpgrade6 = {
+    id: "growUpgrade6",
+    title: "GOING THROUGH CHANGES",
+    priceTag: "(75 EP)",
+    description: "Greatly increased mutation odds",
+    list: "upgradeList1",
+    trigger: function(){return mutateBoost == 2},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 75},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade6.flag = 1;
+        virus.useEvoPoints(75)
+        virus.mutateFloor = .40
+        mutateBoost = 3
+        growUpgrade6.element.parentNode.removeChild(growUpgrade6.element);
+        var index = activeGrow.indexOf(growUpgrade6);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade6);
+
+var growUpgrade7 = {
+    id: "growUpgrade7",
+    title: "MUTATION COMPLETE",
+    priceTag: "(100 EP)",
+    description: "The odds are forever in your favor",
+    list: "upgradeList1",
+    trigger: function(){return mutateBoost == 3},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 100 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade7.flag = 1;
+        virus.useEvoPoints(100)
+        virus.mutateFloor = 0.1
+        mutateBoost = 4
+        growUpgrade7.element.parentNode.removeChild(growUpgrade7.element);
+        var index = activeGrow.indexOf(growUpgrade7);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade7);
+
+var growUpgrade8 = {
+    id: "growUpgrade8",
+    title: "EFFICIENT EVOLUTION",
+    priceTag: "(15 EP, 750 Size)",
+    description: "Decrease amount of size needed for EPs.",
+    list: "upgradeList1",
+    trigger: function(){return sizeBoost == 2},
+    uses: 1,
+    cost: function(){ return virus.evoPoints >= 15 && virus.tSize> 750},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade8.flag = 1;
+        virus.useEvoPoints(15)
+        virus.removeSize(750)
+        evoFactorCount = 1
+        virus.evoLevel = 1
+        virus.evoSet(1)
+        growUpgrade8.element.parentNode.removeChild(growUpgrade8.element);
+        var index = activeGrow.indexOf(growUpgrade8);
+        activeGrow.splice(index, 1);
+    }
+}
+growUpgrades.push(growUpgrade8);
+
+var growUpgrade9 = {
+    id: "growUpgrade9",
+    title: "EVEN MORE EFFICIENT EVOLUTION",
+    priceTag: "(30 EP, 1250 Size)",
+    description: "Even less size for EPs",
+    list: "upgradeList1",
+    trigger: function(){return evoFactorCount == 1},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 30 && virus.tSize> 1250},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade9.flag = 1;
+        virus.useEvoPoints(30)
+        virus.removeSize(1250)
+        evoFactorCount = 2
+        virus.evoLevel = 2
+        virus.evoSet(1)
+        growUpgrade9.element.parentNode.removeChild(growUpgrade9.element);
+        var index = activeGrow.indexOf(growUpgrade9);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade9);
+
+var growUpgrade10 = {
+    id: "growUpgrade10",
+    title: "SYSTEMATIC EVOLUTION",
+    priceTag: "(40 EP. 2000 size)",
+    description: "More evolution, less size.",
+    list: "upgradeList1",
+    trigger: function(){return evoFactorCount == 2},
+    uses: 1,
+    cost: function(){return  virus.evoPoints >= 40 && virus.tSize > 2000 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade10.flag = 1;
+        virus.useEvoPoints(40)
+        virus.removeSize(2000)
+        evoFactorCount = 3
+        virus.evoLevel = 3
+        virus.evoSet(1)
+        growUpgrade10.element.parentNode.removeChild(growUpgrade10.element);
+        var index = activeGrow.indexOf(growUpgrade10);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade10);
+
+var growUpgrade11 = {
+    id: "growUpgrade11",
+    title: "EFFCIENCY OVERLOADED",
+    priceTag: "(100 EP, 3000 size)",
+    description: "Most efficient evolution size can get you.",
+    list: "upgradeList1",
+    trigger: function(){return evoFactorCount == 3},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 100 && virus.tSize > 3000},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade11.flag = 1;
+        virus.useEvoPoints(100)
+        virus.removeSize(3000)
+        evoFactorCount = 4
+        virus.evoLevel = 4
+        virus.evoSet(1)
+        growUpgrade11.element.parentNode.removeChild(growUpgrade11.element);
+        var index = activeGrow.indexOf(growUpgrade11);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade11);
+
+
+var growUpgrade12 = {
+    id: "growUpgrade12",
     title: "REPLICATE",
     priceTag: "(100 EP)",
     description: "Unlock the ability to replicate.",
@@ -118,22 +307,117 @@ var growUpgrade5 = {
     flag: 0,
     element: null,
     effect: function(){
-        growUpgrade5.flag = 1;
+        growUpgrade12.flag = 1;
         virus.useEvoPoints(100)
         virus.replication = true;
         virus.replicateCheck;
         replicateCount = 1;
         virus.replicateLimit = 2
-        growUpgrade5.element.parentNode.removeChild(growUpgrade5.element);
-        var index = activeGrow.indexOf(growUpgrade5);
+        growUpgrade12.element.parentNode.removeChild(growUpgrade12.element);
+        var index = activeGrow.indexOf(growUpgrade12);
         activeGrow.splice(index, 1);
     }
 }
     
-growUpgrades.push(growUpgrade5);
+growUpgrades.push(growUpgrade12);
+
+var growUpgrade13 = {
+    id: "growUpgrade13",
+    title: "WE NEED MORE",
+    priceTag: "(120 EP)",
+    description: "Increase amount of replicates you can create.",
+    list: "upgradeList1",
+    trigger: function(){return replicateCount == 1},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 120},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade13.flag = 1;
+        virus.useEvoPoints(120)
+        replicateCount = 2;
+        virus.replicateLimit = 3
+        growUpgrade13.element.parentNode.removeChild(growUpgrade13.element);
+        var index = activeGrow.indexOf(growUpgrade13);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade13);
+
+var growUpgrade14 = {
+    id: "growUpgrade14",
+    title: "POWER OVERWHELMING",
+    priceTag: "(150 EP)",
+    description: "Reach the maximum replicant count.",
+    list: "upgradeList1",
+    trigger: function(){return replicateCount == 2},
+    uses: 1,
+    cost: function(){return virus.evoPoints >= 150 },
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade14.flag = 1;
+        virus.useEvoPoints(150)
+        replicateCount = 3;
+        virus.replicateLimit = 4
+        growUpgrade14.element.parentNode.removeChild(growUpgrade14.element);
+        var index = activeGrow.indexOf(growUpgrade14);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade14);
 
 
+var growUpgrade15 = {
+    id: "growUpgrade15",
+    title: "WE MUST EVOLVE",
+    priceTag: "(1000 Size)",
+    description: "Incease evolution points per evolution.",
+    list: "upgradeList1",
+    trigger: function(){return sizeBoost == 1},
+    uses: 1,
+    cost: function(){return virus.tsize > 1000}, 
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade15.flag = 1;
+        virus.removeSize(1000)
+        evoAmountCount = 1
+        virus.evoAmount += 1
+        growUpgrade15.element.parentNode.removeChild(growUpgrade15.element);
+        var index = activeGrow.indexOf(growUpgrade15);
+        activeGrow.splice(index, 1);
+    }
+}
+  
+growUpgrades.push(growUpgrade15);
 
+var growUpgrade16 = {
+    id: "growUpgrade16",
+    title: "ONLY THE FITTEST SURVIVE",
+    priceTag: "(7500 Size)",
+    description: "More EP per evolution and a special gift.",
+    list: "upgradeList1",
+    trigger: function(){return evoAmountCount == 1},
+    uses: 1,
+    cost: function(){return virus.tSize > 7500},
+    flag: 0,
+    element: null,
+    effect: function(){
+        growUpgrade16.flag = 1;
+        virus.removeSize(7500)
+        virus.evoPoints += 50
+        evoAmountCount = 2
+        virus.evoAmount += 1
+        growUpgrade16.element.parentNode.removeChild(growUpgrade16.element);
+        var index = activeGrow.indexOf(growUpgrade16);
+        activeGrow.splice(index, 1);
+    }
+}
+    
+growUpgrades.push(growUpgrade16);
 
 
 
@@ -284,7 +568,7 @@ var evoUpgrade7 = {
     priceTag: "(25 EP)",
     description: "Spread to survive",
     list: "upgradeList2",
-    trigger: function(){return virus.evoPoints > 0},
+    trigger: function(){return speedBoost == 3 && powerBoost == 3},
     // trigger: function(){return speedBoost == 3 && powerBoost == 3},
     uses: 1,
     cost: function(){return virus.evoPoints >= 25 },
@@ -304,13 +588,13 @@ evolveUpgrades.push(evoUpgrade7)
 
 var evoUpgrade8 = {
     id: "evoUpgrade8",
-    title: "Lightning Bolt",
+    title: "LIGHTNING BOLT",
     priceTag: "(20 EP)",
     description: "Harness your speed to create lighting.",
     list: "upgradeList2",
     trigger: function(){return combat.combatFlag},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 20 },
+    cost: function(){return virus.evoPoints >= 20},
     flag: 0,
     element: null,
     effect: function(){
@@ -318,8 +602,8 @@ var evoUpgrade8 = {
         virus.useEvoPoints(20)
         var attack = {
             name: "Lightning Bolt",
-            dmg : [50, 55],
-            cooldown : 2000,
+            dmg : [15, 20],
+            cooldown : 2000 - (100 * speedBoost),
             uses: 15
         }
         combat.addAttack(attack)
@@ -332,13 +616,13 @@ evolveUpgrades.push(evoUpgrade8)
 
 var evoUpgrade9 = {
     id: "evoUpgrade9",
-    title: "Toxic Cloud",
+    title: "TOXIC CLOUD",
     priceTag: "(20 EP)",
     description: "Harness your power to create toxins.",
     list: "upgradeList2",
     trigger: function(){return combat.combatFlag},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 20 },
+    cost: function(){return virus.evoPoints >= 20},
     flag: 0,
     element: null,
     effect: function(){
@@ -347,7 +631,7 @@ var evoUpgrade9 = {
         var attack = {
             name: "Toxic Cloud",
             dmg : [10 * powerBoost, 15 * powerBoost],
-            cooldown : 2000,
+            cooldown : 3500,
             uses: 15
         }
         combat.addAttack(attack)
@@ -362,12 +646,12 @@ evolveUpgrades.push(evoUpgrade9)
 
 
 
-function manageUpgrades(upgrades, activeUpgrades,){
+function manageUpgrades(upgrades, activeUpgrades){
     for(var i = 0; i < upgrades.length; i++){
         if (upgrades[i].trigger() && (upgrades[i].uses > 0)){
             displayUpgrades(upgrades[i]);
             upgrades[i].uses = upgrades[i].uses - 1;
-            upgrades.push(upgrades[i]);
+            activeUpgrades.push(upgrades[i]);
         }
     }
         

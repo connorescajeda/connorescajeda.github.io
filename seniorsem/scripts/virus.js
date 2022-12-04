@@ -2,28 +2,30 @@ var virus = {
 
     // Variables
     size : 0,
+    tSize : 0,
     cloneSizes: [],
     totalSize: 0,
     growthRate : 1,
     threshold : 100,
     evoPoints : 0,
-    evoLimit : 15,
+    evoLimit : 20,
+    evoLevel: 0,
+    evoAmount: 1,
     power : 0,
     speed : 0,
     mutation : false,
     mutateCount : 1,
     replication: false,
     replicateLimit: 0,
-    combatSize : 0,
-
-
-
+    mutateFloor: 0.75,
+    values : [100, 200, 500],
+  // 750, 1000, 1500, 2000, 2500
 
     // Functions
 
     onload : function() {
-        virus.setVirusSize(150)
-        virus.totalSize = 150
+        virus.setVirusSize(1)
+        virus.totalSize = 1
         //combat.initCombat()
     },
 
@@ -55,15 +57,33 @@ var virus = {
             } else{
                 htmlInteraction.setInnerHtml("size", "You are a size of " + this.size)
             }
-            
+            this.tSize = sum
         }
         
         else{
             htmlInteraction.setInnerHtml("size", "You are a size of " + this.size)
-            
+            this.tSize = this.size
         }
         
         activate.checkGrowthButtons();
+    },
+
+    removeSize : function(value) {
+        if (this.cloneSizes.length != 0){
+            var split = Math.round(value / this.cloneSizes.length)
+            this.cloneSizes.forEach((element, index) => {
+                if (document.getElementById(`cell${index + 1}`) != null) {
+                        this.cloneSizes[index] -= split
+                        htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
+                    
+                }
+            });
+         virus.size = this.cloneSizes[0] 
+        } else{
+            this.size -= value
+            this.tSize -= value
+            htmlInteraction.setInnerHtml("size", "You are a size of " + this.size)
+        }
     },
 
     virusCombat : function(){
@@ -74,7 +94,6 @@ var virus = {
         var sum = this.cloneSizes.reduce(function(a, b){
             return a + b;
         }, 0); 
-        this.combatSize = sum
         htmlInteraction.setInnerHtml("size", "You have a total size of " + sum)
         
     },
@@ -82,10 +101,11 @@ var virus = {
 
     setEvoPoints : function(){
         if (this.size >= this.evoLimit){
-            this.evoPoints += 300;
+            this.evoPoints += 1;
+            //this.evoPoints += this.evoAmount;
             virus.setVirusSize(this.size - this.evoLimit)
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
-            this.evoLimit *= 1.43
+            //this.evoLimit *= this.evoFactor
             activate.checkTabPanel();
         }
         
@@ -97,6 +117,41 @@ var virus = {
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
         }
     },
+    checkEvoLevel : function(){ 
+        var sum = this.cloneSizes.reduce(function(a, b){
+            return a + b;
+        }, 0); 
+        checkSize = 0
+        if (virus.cloneSizes.length <= 0){
+            checkSize = virus.size
+        } else{
+            checkSize = sum
+        }
+        if (checkSize > 1000 && this.values.length == 3){
+            this.evoSet()
+        } else if (checkSize > 5000 && this.values.length == 2) {
+            this.evoSet()        
+        } else if (checkSize > 10000){
+            this.evoSet()
+        }
+    },
+
+    evoSet : function(number) {
+        console.log(this.values)
+        var valueUpgrades = [.8, .7, .6, .5]
+        if (number != undefined) {
+            this.evoLimit *= valueUpgrades[this.evoLevel - 1]
+        } else{
+            if (this.evoLevel != 0) {
+                this.evoLimit = this.values[0] * valueUpgrades[this.evoLevel - 1]
+            } else{
+                this.evoLimit = this.values[0]
+            } 
+            this.values = this.values.slice(1) 
+        }
+            
+        },
+
 
     setGrowthRate : function(value){
         this.growthRate += value;
@@ -117,7 +172,7 @@ var virus = {
         if (this.mutation && this.totalSize / 1000 > this.mutateCount){
             this.mutateCount += 1
             num = Math.random();
-            if (num > .75){
+            if (num > this.mutateFloor){
                 num = Math.random();
                 if (.33 >= num){
                     console.log("GROWTH")

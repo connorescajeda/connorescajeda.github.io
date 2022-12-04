@@ -12,6 +12,7 @@ var main = {
         } else{
             virus.setVirusSize(virus.size + virus.growthRate);
             virus.totalSize += virus.growthRate;
+            virus.checkEvoLevel()
         }
         manageUpgrades(growUpgrades, activeGrow)
         manageUpgrades(evolveUpgrades, activeEvo)

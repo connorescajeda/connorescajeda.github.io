@@ -36,6 +36,7 @@ var combat = {
     initCombat : function(){
         htmlInteraction.showButton("enemyDisplay")
         htmlInteraction.showButton("enemy1")
+        htmlInteraction.setInnerHtml("enemyName", this.current_enemy.name)
         this.combatFlag = true
         this.displayMessages("You must fight to survive.")
     },
@@ -76,7 +77,7 @@ var combat = {
                 damage = this.getRandomInt(attack-10, attack)
                 virus.setVirusSize(virus.size - damage)
                 this.current_enemy.cooldown = false
-                this.displayMessages(`${tmp["desc"] + damage}.`)
+                this.displayMessages(`${tmp["desc"] + damage}.`, true)
                 window.setTimeout(function () {enemyCooldowns(combat.current_enemy)}, cooldown);
 
             } else if (this.current_enemy.cooldown) {
@@ -86,7 +87,7 @@ var combat = {
                 damage = this.getRandomInt(attack-10, attack)
                 index = virus.cloneSizes.length
                 virus.cloneSizes[index - 1] -= damage
-                this.displayMessages(`${tmp["desc"] + damage}.`)
+                this.displayMessages(`${tmp["desc"] + damage}.`, true)
                 this.cloneSizeCheck(index - 1)
                 this.current_enemy.cooldown = false
                 virus.virusCombat()
@@ -154,19 +155,27 @@ var combat = {
         return Math.floor(Math.random() * (max - min) + min);
     },
 
-    displayMessages : function(msg) {
-        htmlInteraction.setInnerHtml("message5", htmlInteraction.getElement("message4").innerHTML)
-        htmlInteraction.setInnerHtml("message4", htmlInteraction.getElement("message3").innerHTML)
-        htmlInteraction.setInnerHtml("message3", htmlInteraction.getElement("message2").innerHTML)
-        htmlInteraction.setInnerHtml("message2", htmlInteraction.getElement("message1").innerHTML)
-        htmlInteraction.setInnerHtml("message1", msg)
+    displayMessages : function(msg, attack) {
+        if (msg != htmlInteraction.getElement("message1").innerHTM || attack){
+            htmlInteraction.setInnerHtml("message5", htmlInteraction.getElement("message4").innerHTML)
+            htmlInteraction.setInnerHtml("message4", htmlInteraction.getElement("message3").innerHTML)
+            htmlInteraction.setInnerHtml("message3", htmlInteraction.getElement("message2").innerHTML)
+            htmlInteraction.setInnerHtml("message2", htmlInteraction.getElement("message1").innerHTML)
+            htmlInteraction.setInnerHtml("message1", msg)
+        }
+        
     },
     nextEnemy : function(){
+        enemy = htmlInteraction.getElement(`enemy${this.enemyId}`)
+        enemy.remove()
         this.enemyId += 1
         this.current_enemy = enemies[this.enemyId - 1]
         this.enemy_health = this.current_enemy.health
+        this.displayMessages(`You have arrived at a ${this.current_enemy.name.toLowerCase()}.`)
+
+        htmlInteraction.setInnerHtml("enemyName", this.current_enemy.name)
         htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
-        htmlInteraction.showButton(this.current_enemy.id)
+        htmlInteraction.setElementDisplay(this.current_enemy.id, "block")
         
     }
 
@@ -175,9 +184,9 @@ var combat = {
 
 
 function resetCooldown(index){
-    console.log(this.cooldowns)
+    console.log(combat.cooldowns)
     combat.cooldowns[index] = true
-    console.log(this.cooldowns)
+    console.log(combat.cooldowns)
 }
 
 function enemyCooldowns(enemy){
