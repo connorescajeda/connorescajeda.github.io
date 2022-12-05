@@ -93,7 +93,6 @@ growUpgrades.push(growUpgrade3);
 
 
 
-
 // Mutation upgrades
 
 var growUpgrade4 = {
@@ -422,22 +421,20 @@ growUpgrades.push(growUpgrade16);
 
 
 
-
-
 var evoUpgrade1 = {
     id: "evoUpgrade1",
     title: "POWER",
-    priceTag: "(1 EP)",
+    priceTag: "(4 EP)",
     description: "Begin gaining power",
     list: "upgradeList2",
     trigger: function(){return virus.evoPoints > 0},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 1 },
+    cost: function(){return virus.evoPoints >= 4},
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade1.flag = 1;
-        virus.useEvoPoints(1)
+        virus.useEvoPoints(4)
         virus.setPower(1)
         powerBoost = 1;
         evoUpgrade1.element.parentNode.removeChild(evoUpgrade1.element);
@@ -450,17 +447,17 @@ evolveUpgrades.push(evoUpgrade1)
 var evoUpgrade2 = {
     id: "evoUpgrade1",
     title: "SPEED",
-    priceTag: "(1 EP)",
+    priceTag: "(4 EP)",
     description: "Begin gaining speed",
     list: "upgradeList2",
     trigger: function(){return virus.evoPoints > 0},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 1 },
+    cost: function(){return virus.evoPoints >= 4 },
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade2.flag = 1;
-        virus.useEvoPoints(1)
+        virus.useEvoPoints(4)
         virus.setSpeed(1)
         speedBoost = 1;
         evoUpgrade2.element.parentNode.removeChild(evoUpgrade2.element);
@@ -473,17 +470,17 @@ evolveUpgrades.push(evoUpgrade2)
 var evoUpgrade3 = {
     id: "evoUpgradex ",
     title: "MORE POWER",
-    priceTag: "(2 EP)",
+    priceTag: "(5 EP)",
     description: "Gain more power",
     list: "upgradeList2",
     trigger: function(){return powerBoost == 1},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 2 },
+    cost: function(){return virus.evoPoints >= 5 },
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade3.flag = 1;
-        virus.useEvoPoints(2)
+        virus.useEvoPoints(5)
         virus.setPower(2)
         powerBoost = 2;
         evoUpgrade3.element.parentNode.removeChild(evoUpgrade3.element);
@@ -496,17 +493,17 @@ evolveUpgrades.push(evoUpgrade3)
 var evoUpgrade4 = {
     id: "evoUpgradex ",
     title: "MORE SPEED",
-    priceTag: "(2 EP)",
+    priceTag: "(5 EP)",
     description: "Gain more speed",
     list: "upgradeList2",
     trigger: function(){return speedBoost == 1},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 2},
+    cost: function(){return virus.evoPoints >= 5},
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade4.flag = 1;
-        virus.useEvoPoints()
+        virus.useEvoPoints(5)
         virus.setSpeed(2)
         speedBoost = 2
         evoUpgrade4.element.parentNode.removeChild(evoUpgrade4.element);
@@ -519,17 +516,17 @@ evolveUpgrades.push(evoUpgrade4)
 var evoUpgrade5 = {
     id: "evoUpgrade5",
     title: "EVEN MORE POWER",
-    priceTag: "(4 EP)",
+    priceTag: "(6 EP)",
     description: "Read the title",
     list: "upgradeList2",
     trigger: function(){return powerBoost == 2},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 4 },
+    cost: function(){return virus.evoPoints >= 6 },
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade5.flag = 1;
-        virus.useEvoPoints(4)
+        virus.useEvoPoints(6)
         virus.setPower(4)
         powerBoost = 3;
         evoUpgrade5.element.parentNode.removeChild(evoUpgrade5.element);
@@ -547,12 +544,12 @@ var evoUpgrade6 = {
     list: "upgradeList2",
     trigger: function(){return speedBoost == 2},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 4 },
+    cost: function(){return virus.evoPoints >= 6 },
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade6.flag = 1;
-        virus.useEvoPoints(4)
+        virus.useEvoPoints(6)
         virus.setSpeed(4)
         speedBoost = 3;
         evoUpgrade6.element.parentNode.removeChild(evoUpgrade6.element);

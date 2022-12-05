@@ -1,7 +1,7 @@
 var enemy1 = {
     id : "enemy1",
     name: "Humble Farming Village",
-    health: 100,
+    health: 200,
     attack0 : {"dmg" : 100, "cooldown": 3000, "desc": `The enemy threw a pitch fork and reduced your size by `},
     cooldown: true,
 }
@@ -9,14 +9,50 @@ var enemy1 = {
 var enemy2 = {
     id : "enemy2",
     name: "Quaint Fishing Town",
-    health: 200,
+    health: 400,
     attack0 : {"dmg" : 130, "cooldown": 2600, "desc": `The enemy hooked you with their poles and reduced your size by `},
+    cooldown: true,
+}
+var enemy3 = {
+    id : "enemy3",
+    name: "Growing Suburban Neighborhood",
+    health: 800,
+    attack0 : {"dmg" : 200, "cooldown": 2000, "desc": `The children ran over you with their bicycles and reduced your size by `},
+    cooldown: true,
+}
+var enemy4 = {
+    id : "enemy4",
+    name: "Bustling City",
+    health: 1500,
+    attack0 : {"dmg" : 300, "cooldown": 2400, "desc": `The noise of the area harms you and reduced your size by `},
+    attack1 : {"dmg" : 150, "cooldown": 5000, "desc": `Antibiotics were given to your victims and reduced the size of each cell by `},
+    cooldown: true,
+}
+var enemy5 = {
+    id : "enemy5",
+    name: "Thriving Metropolitan Area",
+    health: 2500,
+    attack0 : {"dmg" : 450, "cooldown": 2500, "desc": `The flashing lights harm your ability to replicate and you reduce your size by `},
+    cooldown: true,
+}
+var enemy6 = {
+    id : "enemy6",
+    name: "Nuclear Power Plant",
+    health: 4000,
+    attack0 : {"dmg" : 600, "cooldown": 2000, "desc": `Radiation hurts and reduced your size by `},
+    cooldown: true,
+}
+var enemy7 = {
+    id : "enemy7",
+    name: "The World",
+    health: 6000,
+    attack0 : {"dmg" : 700, "cooldown": 2000, "desc": `The world throws everything it has at you and reduced your size by `},
     cooldown: true,
 }
 
 
 
-enemies = [enemy1, enemy2]
+enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7]
 var combat = {
 
     combatFlag : false,
@@ -43,10 +79,10 @@ var combat = {
 
     battleFlag : function(){
         if (this.combatFlag) {
-            if (this.inBattle) {
-                this.inBattle = false
-            } else{
+            if (this.inBattle == false) {
                 this.inBattle = true
+                var test = "You are now in battle."
+                this.displayMessages(test, false, true)
             }
         }
         
@@ -155,13 +191,16 @@ var combat = {
         return Math.floor(Math.random() * (max - min) + min);
     },
 
-    displayMessages : function(msg, attack) {
-        if (msg != htmlInteraction.getElement("message1").innerHTM || attack){
+    displayMessages : function(msg, attack, bold) {
+        if (msg != htmlInteraction.getElement("message1").innerHTML || attack){
             htmlInteraction.setInnerHtml("message5", htmlInteraction.getElement("message4").innerHTML)
             htmlInteraction.setInnerHtml("message4", htmlInteraction.getElement("message3").innerHTML)
             htmlInteraction.setInnerHtml("message3", htmlInteraction.getElement("message2").innerHTML)
             htmlInteraction.setInnerHtml("message2", htmlInteraction.getElement("message1").innerHTML)
             htmlInteraction.setInnerHtml("message1", msg)
+        }
+        if (bold){
+            htmlInteraction.getElement("message1").style.fontWeight = "bold"
         }
         
     },

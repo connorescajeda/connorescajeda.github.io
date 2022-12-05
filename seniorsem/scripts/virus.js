@@ -24,7 +24,7 @@ var virus = {
     // Functions
 
     onload : function() {
-        virus.setVirusSize(1)
+        virus.setVirusSize(1000)
         virus.totalSize = 1
         //combat.initCombat()
     },
@@ -101,7 +101,7 @@ var virus = {
 
     setEvoPoints : function(){
         if (this.size >= this.evoLimit){
-            this.evoPoints += 1;
+            this.evoPoints += 50;
             //this.evoPoints += this.evoAmount;
             virus.setVirusSize(this.size - this.evoLimit)
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
