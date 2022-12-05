@@ -81,8 +81,8 @@ var combat = {
         if (this.combatFlag) {
             if (this.inBattle == false) {
                 this.inBattle = true
-                var test = "You are now in battle."
-                this.displayMessages(test, false, true)
+                var test = "You have started a battle."
+                virus.displayVirusMessages(test)
             }
         }
         
@@ -95,13 +95,16 @@ var combat = {
             if (virus.size < 0){
                 virus.size = 1
                 this.inBattle = false
-                this.displayMessages("The enemy has bested you. Grow and try again later.")     
+                virus.displayVirusMessages("The enemy has bested you. Grow and try again later.")    
+                this.refreshAttacks() 
                 this.current_enemy.health = this.enemy_health
+                htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
                 
 
             } else if (this.current_enemy.health < 0) {
                 this.inBattle = false
-                this.displayMessages("You have vanquished the foe. Feast.")
+                virus.displayVirusMessages("You have vanquished the foe. Feast.")
+                this.refreshAttacks()
                 htmlInteraction.setElementVisibility(this.current_enemy.id, false)
                 this.nextEnemy()
 
@@ -138,12 +141,15 @@ var combat = {
             if (index == 0){
                 virus.setVirusSize(1)
                 this.inBattle = false
-                this.displayMessages("The enemy has bested you. Grow and try again later.")    
+                virus.displayVirusMessages("The enemy has bested you. Grow and try again later.") 
+                this.refreshAttacks()
+                this.current_enemy.health = this.enemy_health
+                htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
             } else{
                 virus.cloneSizes.pop()
                 cell = htmlInteraction.getElement(`cell${index+1}`)
                 cell.remove()
-                this.displayMessages(`You have lost one of your replicants.`)
+                virus.displayVirusMessages(`You have lost one of your replicants.`)
             }
             
             
@@ -154,34 +160,56 @@ var combat = {
         if (this.inBattle){
             attack = this.attacks[index]
             console.log(this.current_enemy)
-            if (this.cooldowns[index] == true){
+            if (this.cooldowns[index] == true && attack.used > 0){
                 console.log(this.current_enemy)
                 dmg = this.getRandomInt(attack.dmg[0], attack.dmg[1])
                 this.current_enemy.health -= dmg
                 this.cooldowns[index] = false
+                attack.used -= 1
+                button = htmlInteraction.getElement(`attack${index}Button`)
+                button.setAttribute("data-sm-link-text", `${attack.used} / ${attack.uses} casts`)
                 this.displayMessages(`You cast ${attack.name} and do ${dmg} damage.`)
                 window.setTimeout(function () {resetCooldown(index)}, attack.cooldown);
             } else{
-                this.displayMessages("That ability is on cooldown.")
+                if (attack.used <= 0) {
+                    this.displayMessages("That ability is out of uses.")
+                } else{
+                    this.displayMessages("That ability is on cooldown.")
+                }
+                
             }
             
         } else{
-            this.displayMessages("You must be in combat to use your abilities.")
+            virus.displayVirusMessages("You must be in combat to use your abilities.")
         }
+    },
+    refreshAttacks : function(){
+        this.attacks.forEach((index) => {
+            this.attacks[index].used = this.attacks[index].uses
+        })
     },
 
    
 
-    addAttack: function(attack){
+    addAttack: function(attack, upgrade){
         size = this.attacks.length
-        if (size <= 4) {
-            this.attacks.push(attack)
-            htmlInteraction.showButton(`attack${size}Button`)
-            htmlInteraction.setInnerHtml(`attack${size}`, attack.name)
-            button = htmlInteraction.getElement(`attack${size}Button`)
-            button.setAttribute("data-sm-link-text", `${attack.uses} / ${attack.uses} casts`)
-            
+        if (upgrade){
+            this.attacks.forEach((element, index) => {
+                if (element.name == attack.name){
+                    this.attacks[index] = attack
+                }
+            })
+        } 
+        else{
+            if (size <= 4) {
+                this.attacks.push(attack)
+                htmlInteraction.showButton(`attack${size}Button`)
+                htmlInteraction.setInnerHtml(`attack${size}`, attack.name)
+                button = htmlInteraction.getElement(`attack${size}Button`)
+                button.setAttribute("data-sm-link-text", `${attack.used} / ${attack.uses} casts`) 
+            }
         }
+        
     },
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -191,16 +219,13 @@ var combat = {
         return Math.floor(Math.random() * (max - min) + min);
     },
 
-    displayMessages : function(msg, attack, bold) {
-        if (msg != htmlInteraction.getElement("message1").innerHTML || attack){
-            htmlInteraction.setInnerHtml("message5", htmlInteraction.getElement("message4").innerHTML)
-            htmlInteraction.setInnerHtml("message4", htmlInteraction.getElement("message3").innerHTML)
-            htmlInteraction.setInnerHtml("message3", htmlInteraction.getElement("message2").innerHTML)
-            htmlInteraction.setInnerHtml("message2", htmlInteraction.getElement("message1").innerHTML)
-            htmlInteraction.setInnerHtml("message1", msg)
-        }
-        if (bold){
-            htmlInteraction.getElement("message1").style.fontWeight = "bold"
+    displayMessages : function(msg, attack) {
+        if (msg != htmlInteraction.getElement("message1-2").innerHTML || attack){
+            htmlInteraction.setInnerHtml("message5-2", htmlInteraction.getElement("message4-2").innerHTML)
+            htmlInteraction.setInnerHtml("message4-2", htmlInteraction.getElement("message3-2").innerHTML)
+            htmlInteraction.setInnerHtml("message3-2", htmlInteraction.getElement("message2-2").innerHTML)
+            htmlInteraction.setInnerHtml("message2-2", htmlInteraction.getElement("message1-2").innerHTML)
+            htmlInteraction.setInnerHtml("message1-2", msg)
         }
         
     },
@@ -210,7 +235,7 @@ var combat = {
         this.enemyId += 1
         this.current_enemy = enemies[this.enemyId - 1]
         this.enemy_health = this.current_enemy.health
-        this.displayMessages(`You have arrived at a ${this.current_enemy.name.toLowerCase()}.`)
+        virus.displayVirusMessages(`You are now facing ${this.current_enemy.name.toLowerCase()}.`)
 
         htmlInteraction.setInnerHtml("enemyName", this.current_enemy.name)
         htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)

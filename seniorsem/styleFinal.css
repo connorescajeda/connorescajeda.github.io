@@ -228,3 +228,20 @@ ul {
 .healthbar{
   width: 100%;
 }
+
+#middleColumnevo{
+  float: left;
+  width: 275px;
+}
+#consoleColumn{
+  float: right;
+  width: 350px;
+  background-color: #000;
+  height:100%;
+  color: #fff;
+}
+.console{
+  color: #fff;
+  font-weight: bold;
+  font-size: 2em;
+}

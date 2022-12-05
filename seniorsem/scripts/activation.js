@@ -10,7 +10,7 @@ var activate = {
 
     checkGrowthButtons: function(){
         // Show evolve button
-        if (virus.size >= 15){
+        if (virus.size >= 20){
             htmlInteraction.showButton("evoPoints");
             this.enableButton("evoPoints")
         }

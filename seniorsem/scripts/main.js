@@ -2,6 +2,7 @@ var main = {
 
     onload : function() {
         window.setInterval(this.secInterval.bind(this), 1000);
+        window.setInterval(this.tenthInterval.bind(this), 70);
         virus.onload();
         tabs.onload();
     },
@@ -14,10 +15,14 @@ var main = {
             virus.totalSize += virus.growthRate;
             virus.checkEvoLevel()
         }
-        manageUpgrades(growUpgrades, activeGrow)
-        manageUpgrades(evolveUpgrades, activeEvo)
+        
         virus.mutationCheck();
         virus.replicateCheck();
+    },
+
+    tenthInterval: function(){
+        manageUpgrades(growUpgrades, activeGrow)
+        manageUpgrades(evolveUpgrades, activeEvo)
     }
     
 }

@@ -24,7 +24,7 @@ var virus = {
     // Functions
 
     onload : function() {
-        virus.setVirusSize(1000)
+        virus.setVirusSize(100000)
         virus.totalSize = 1
         //combat.initCombat()
     },
@@ -101,12 +101,14 @@ var virus = {
 
     setEvoPoints : function(){
         if (this.size >= this.evoLimit){
-            this.evoPoints += 50;
+            this.evoPoints += 1000;
             //this.evoPoints += this.evoAmount;
             virus.setVirusSize(this.size - this.evoLimit)
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
             //this.evoLimit *= this.evoFactor
             activate.checkTabPanel();
+        } else{
+            this.displayVirusMessages(`You need ${this.evoLimit - this.size} more size to do that!`)
         }
         
     },
@@ -131,13 +133,12 @@ var virus = {
             this.evoSet()
         } else if (checkSize > 5000 && this.values.length == 2) {
             this.evoSet()        
-        } else if (checkSize > 10000){
+        } else if (checkSize > 10000 && this.values.length >= 1){
             this.evoSet()
         }
     },
 
     evoSet : function(number) {
-        console.log(this.values)
         var valueUpgrades = [.8, .7, .6, .5]
         if (number != undefined) {
             this.evoLimit *= valueUpgrades[this.evoLevel - 1]
@@ -149,8 +150,9 @@ var virus = {
             } 
             this.values = this.values.slice(1) 
         }
-            
+        this.displayVirusMessages(`Evolution points now cost ${this.evoLimit} size!`) 
         },
+        
 
 
     setGrowthRate : function(value){
@@ -175,13 +177,13 @@ var virus = {
             if (num > this.mutateFloor){
                 num = Math.random();
                 if (.33 >= num){
-                    console.log("GROWTH")
+                    virus.displayVirusMessages("You now gain size quicker due to a mutation!")
                     this.setGrowthRate(Math.round(this.growthRate / 2))
                 }else if (.66 >= num){
-                    console.log("POWER")
+                    virus.displayVirusMessages("You have gained more power due to a mutation!")
                     this.setPower(Math.round(this.power / 2))
                 } else{
-                    console.log("SPEED")
+                    virus.displayVirusMessages("You have gained more speed due to a mutation!")
                     this.setSpeed(Math.round(this.speed / 2))
                 }
             }
@@ -236,6 +238,15 @@ var virus = {
         document.getElementById("replication").appendChild(cell.element)
        
     },
+    displayVirusMessages: function(msg) {
+        if (msg != htmlInteraction.getElement("message1").innerHTML){
+            htmlInteraction.setInnerHtml("message5", htmlInteraction.getElement("message4").innerHTML)
+            htmlInteraction.setInnerHtml("message4", htmlInteraction.getElement("message3").innerHTML)
+            htmlInteraction.setInnerHtml("message3", htmlInteraction.getElement("message2").innerHTML)
+            htmlInteraction.setInnerHtml("message2", htmlInteraction.getElement("message1").innerHTML)
+            htmlInteraction.setInnerHtml("message1", msg)
+        }
+    }
 
    
 }
