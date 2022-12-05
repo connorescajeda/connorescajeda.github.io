@@ -227,6 +227,8 @@ var virus = {
              }
              this.cloneSizes.push(Math.round(this.cloneSizes[0] / 2))
              this.createCell(cell)
+        } else {
+            virus.displayVirusMessages("You are at your replication max.")
         }
     },
 

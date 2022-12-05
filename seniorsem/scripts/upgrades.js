@@ -326,17 +326,17 @@ growUpgrades.push(growUpgrade12);
 var growUpgrade13 = {
     id: "growUpgrade13",
     title: "WE NEED MORE",
-    priceTag: "(120 EP)",
+    priceTag: "(85 EP)",
     description: "Increase amount of replicates you can create.",
     list: "upgradeList1",
     trigger: function(){return replicateCount == 1},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 120},
+    cost: function(){return virus.evoPoints >= 85},
     flag: 0,
     element: null,
     effect: function(){
         growUpgrade13.flag = 1;
-        virus.useEvoPoints(120)
+        virus.useEvoPoints(85)
         replicateCount = 2;
         virus.replicateLimit = 3
         growUpgrade13.element.parentNode.removeChild(growUpgrade13.element);
@@ -350,17 +350,17 @@ growUpgrades.push(growUpgrade13);
 var growUpgrade14 = {
     id: "growUpgrade14",
     title: "POWER OVERWHELMING",
-    priceTag: "(150 EP)",
+    priceTag: "(100 EP)",
     description: "Reach the maximum replicant count.",
     list: "upgradeList1",
     trigger: function(){return replicateCount == 2},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 150 },
+    cost: function(){return virus.evoPoints >= 100 },
     flag: 0,
     element: null,
     effect: function(){
         growUpgrade14.flag = 1;
-        virus.useEvoPoints(150)
+        virus.useEvoPoints(100)
         replicateCount = 3;
         virus.replicateLimit = 4
         growUpgrade14.element.parentNode.removeChild(growUpgrade14.element);

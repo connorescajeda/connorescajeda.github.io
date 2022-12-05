@@ -14,14 +14,37 @@
     </head>
 
     <body>
+        <div id="small">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="small-text">
+                Your screen must be larger to play the game!
+                <br>
+                This game was not designed
+                <br>
+                 for 
+                 <br>
+                 phones or small screens :/
+            </div>           
+            
+            
+        </div>
         <div id="page"> 
             <!-- <div id="banner">
                 <h1 id="name"> Growth </h1>
             </div> -->
             <div id="tabBar" style="display:none">
                 <ul id="tabs">
-                    <li><button class="tab-0" tab="tab_growth">Growth</button></li>
-                    <li><button class="tab-1" tab="tab_evolution">Evolution</button></li>
+                    <li><button id="tab" class="tab-0" tab="tab_growth">Growth</button></li>
+                    <li><button id="tab" class="tab-1" tab="tab_evolution">Evolution</button></li>
 
                 </ul>
             </div>
@@ -29,7 +52,7 @@
             <!-- Growth Tab -->
             <div id="tab_growth">
                 <div id="leftColumn">
-                    <h2>Growth</h2>
+                    <h2>Grow</h2>
                     <hr>
                     <span id="size"> </span> 
                     <br>
@@ -46,13 +69,14 @@
                 </div>
                 <div id ="middleColumn">
                     <div id="replication" style="visibility:hidden">
-                        <h2>Replication</h2>
-                        
+                        <h2>Replicate</h2>
+                        <hr>
                     </div>
                 </div>
                 <div id="rightColumn">
                     <div id="enemyDisplay" style="visibility:hidden">
                         <h2>Survive</h2>
+                        <hr>
                         <h4 id="enemyName"></h4>
                         <div id="ascii">
                             <pre id="enemy1" style="visibility:hidden">
@@ -212,7 +236,7 @@ __________________  ___________    __________________    ____________
             <!-- Evo Tab -->
             <div id="tab_evolution">
                 <div id="leftColumn">
-                    <h2>Evolution</h2>
+                    <h2>Evolve</h2>
                     
                     <hr>
                     <div id="upgradeList1">
@@ -221,7 +245,7 @@ __________________  ___________    __________________    ____________
                   
                 </div>
                 <div id="middleColumnevo" style="visibility: hidden;">
-                    <h2>Growth</h2>
+                    <h2>Spread</h2>
                     <hr>  
 
                     <div id="upgradeList2">
