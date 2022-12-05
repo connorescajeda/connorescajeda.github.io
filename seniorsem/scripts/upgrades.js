@@ -692,7 +692,7 @@ var evoUpgrade10 = {
             used : 15
         }
         lightningCount = 3
-        combat.addAttack(attack,)
+        combat.addAttack(attack, true)
         evoUpgrade10.element.parentNode.removeChild(evoUpgrade10.element);
         var index = activeEvo.indexOf(evoUpgrade10);
         activeEvo.splice(index, 1);
@@ -776,13 +776,13 @@ var evoUpgrade13 = {
         virus.useEvoPoints(60)
         var attack = {
             name: "Toxic Cloud",
-            dmg : [10 * powerBoost, 15 * powerBoost],
+            dmg : [65 * powerBoost, 75 * powerBoost],
             cooldown : 4000,
             uses: 15,
             used : 15
         }
         toxicCount = 3
-        combat.addAttack(attack)
+        combat.addAttack(attack, true)
         evoUpgrade13.element.parentNode.removeChild(evoUpgrade13.element);
         var index = activeEvo.indexOf(evoUpgrade13);
         activeEvo.splice(index, 1);
@@ -980,12 +980,12 @@ var evoUpgrade20 = {
     list: "upgradeList2",
     trigger: function(){return powerBoost == 3 && combat.combatFlag},
     uses: 1,
-    cost: function(){return virus.evoPoints >= 15 },
+    cost: function(){return virus.evoPoints >= 30},
     flag: 0,
     element: null,
     effect: function(){
         evoUpgrade20.flag = 1;
-        virus.useEvoPoints(15)
+        virus.useEvoPoints(30)
         virus.setPower(4)
         powerBoost = 4;
         evoUpgrade20.element.parentNode.removeChild(evoUpgrade20.element);

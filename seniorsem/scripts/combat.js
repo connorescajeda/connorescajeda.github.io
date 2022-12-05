@@ -184,8 +184,11 @@ var combat = {
         }
     },
     refreshAttacks : function(){
-        this.attacks.forEach((index) => {
-            this.attacks[index].used = this.attacks[index].uses
+        this.attacks.forEach((element, index) => {
+            attack = this.attacks[index]
+            attack.used = attack.uses
+            button = htmlInteraction.getElement(`attack${index}Button`)
+            button.setAttribute("data-sm-link-text", `${attack.used} / ${attack.uses} casts`)
         })
     },
 

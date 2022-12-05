@@ -24,7 +24,7 @@ var virus = {
     // Functions
 
     onload : function() {
-        virus.setVirusSize(1)
+        virus.setVirusSize(100)
         virus.totalSize = 1
         //combat.initCombat()
     },
@@ -73,8 +73,16 @@ var virus = {
             var split = Math.round(value / this.cloneSizes.length)
             this.cloneSizes.forEach((element, index) => {
                 if (document.getElementById(`cell${index + 1}`) != null) {
+                    if (this.cloneSizes[index] - split > 0){
                         this.cloneSizes[index] -= split
                         htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
+                    } else {
+                        extra = split - this.cloneSizes[index]
+                        this.cloneSizes[index] = 1
+                        this.cloneSizes[index + 1] -= extra
+                        htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
+                    }
+                        
                     
                 }
             });
@@ -101,9 +109,10 @@ var virus = {
 
     setEvoPoints : function(){
         if (this.size >= this.evoLimit){
-            //this.evoPoints += 1000;
-            this.evoPoints += this.evoAmount;
-            virus.setVirusSize(this.size - this.evoLimit)
+            this.evoPoints += 100000;
+            //this.evoPoints += this.evoAmount;
+            virus.removeSize(this.evoLimit)
+            //virus.setVirusSize(this.size - this.evoLimit)
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
             //this.evoLimit *= this.evoFactor
             activate.checkTabPanel();
