@@ -66,7 +66,7 @@ var combat = {
     message3 : "",
     message4: "",
     message5: "",
-    enemyId : 1,
+    enemyId : 6,
 
 
     initCombat : function(){
@@ -235,14 +235,32 @@ var combat = {
     nextEnemy : function(){
         enemy = htmlInteraction.getElement(`enemy${this.enemyId}`)
         enemy.remove()
-        this.enemyId += 1
-        this.current_enemy = enemies[this.enemyId - 1]
-        this.enemy_health = this.current_enemy.health
-        virus.displayVirusMessages(`You are now facing ${this.current_enemy.name.toLowerCase()}.`)
+        if (this.current_enemy.id == "enemy7"){
+            htmlInteraction.setElementVisibility("enemyName", false)
+            htmlInteraction.setElementVisibility("enemyHP", false)
+            htmlInteraction.setElementVisibility("combat", false)
+            htmlInteraction.setElementVisibility("attack0Button", false)
+            htmlInteraction.setElementVisibility("attack1Button", false)
+            htmlInteraction.setElementVisibility("attack2Button", false)
+            htmlInteraction.setElementVisibility("attack3Button", false)
+            this.displayMessages("YOU HAVE WON THE GAME!!!!!")
+            this.displayMessages("YOU HAVE WON THE GAME!!!!")
+            this.displayMessages("YOU HAVE WON THE GAME!!!")
+            this.displayMessages("YOU HAVE WON THE GAME!!")
+            this.displayMessages("YOU HAVE WON THE GAME!")
+            htmlInteraction.setElementDisplay("winner", "block")
 
-        htmlInteraction.setInnerHtml("enemyName", this.current_enemy.name)
-        htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
-        htmlInteraction.setElementDisplay(this.current_enemy.id, "block")
+        } else {
+            this.enemyId += 1
+            this.current_enemy = enemies[this.enemyId - 1]
+            this.enemy_health = this.current_enemy.health
+            virus.displayVirusMessages(`You are now facing ${this.current_enemy.name.toLowerCase()}.`)
+            htmlInteraction.setInnerHtml("enemyName", this.current_enemy.name)
+            htmlInteraction.setInnerHtml("enemyHP", "Health: " + `${this.current_enemy.health}/${this.enemy_health}`)
+            htmlInteraction.setElementDisplay(this.current_enemy.id, "block")
+        }
+            
+        
         
     }
 

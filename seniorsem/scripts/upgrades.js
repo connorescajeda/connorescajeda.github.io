@@ -410,9 +410,8 @@ var growUpgrade16 = {
     effect: function(){
         growUpgrade16.flag = 1;
         virus.removeSize(7500)
-        console.log(virus.evoPoints)
         virus.evoPoints += 50
-        virus.setEvoPoints()
+        htmlInteraction.setInnerHtml("evo", "You have " + virus.evoPoints + " evolution points.")
         evoAmountCount = 2
         virus.evoAmount += 1
         growUpgrade16.element.parentNode.removeChild(growUpgrade16.element);
@@ -721,7 +720,7 @@ var evoUpgrade11 = {
             uses: 15,
             used : 15
         }
-        toxicCount += 1
+        toxicCount = 1
         combat.addAttack(attack)
         evoUpgrade11.element.parentNode.removeChild(evoUpgrade11.element);
         var index = activeEvo.indexOf(evoUpgrade8);
@@ -751,7 +750,7 @@ var evoUpgrade12 = {
             uses: 15,
             used : 15
         }
-        toxicCount += 1
+        toxicCount = 2
         combat.addAttack(attack, true)
         evoUpgrade12.element.parentNode.removeChild(evoUpgrade12.element);
         var index = activeEvo.indexOf(evoUpgrade12);
@@ -918,7 +917,7 @@ var evoUpgrade18 = {
     priceTag: "(65 EP)",
     description: "The chemicals have become quite unruly",
     list: "upgradeList2",
-    trigger: function(){return toxicCount == 1 && powerBoost == 4},
+    trigger: function(){return acidCount == 1 && powerBoost == 4},
     uses: 1,
     cost: function(){return virus.evoPoints >= 65},
     flag: 0,
@@ -948,7 +947,7 @@ var evoUpgrade19 = {
     priceTag: "(80 EP)",
     description: "The acid can't be contained by anything.",
     list: "upgradeList2",
-    trigger: function(){return toxicCount == 2 && powerBoost == 5},
+    trigger: function(){return acidCount == 2 && powerBoost == 5},
     uses: 1,
     cost: function(){return virus.evoPoints >= 8},
     flag: 0,
@@ -958,7 +957,7 @@ var evoUpgrade19 = {
         virus.useEvoPoints(80)
         var attack = {
             name: "Acid Pool",
-            dmg : [85 * powerBoost , 100 * powerBoost],
+            dmg : [85 * powerBoost , 105 * powerBoost],
             cooldown : 3750,
             uses: 12,
             used : 12
@@ -1010,7 +1009,7 @@ var evoUpgrade21 = {
         evoUpgrade21.flag = 1;
         virus.useEvoPoints(50)
         virus.setPower(2)
-        powerBoost = 1;
+        powerBoost = 5;
         evoUpgrade21.element.parentNode.removeChild(evoUpgrade21.element);
         var index = activeEvo.indexOf(evoUpgrade21);
         activeEvo.splice(index, 1);

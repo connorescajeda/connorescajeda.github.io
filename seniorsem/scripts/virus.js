@@ -71,21 +71,35 @@ var virus = {
     removeSize : function(value) {
         if (this.cloneSizes.length != 0){
             var split = Math.round(value / this.cloneSizes.length)
+            var extra = 0
             this.cloneSizes.forEach((element, index) => {
                 if (document.getElementById(`cell${index + 1}`) != null) {
                     if (this.cloneSizes[index] - split > 0){
                         this.cloneSizes[index] -= split
                         htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
                     } else {
-                        extra = split - this.cloneSizes[index]
+                        extra += Math.round(split - this.cloneSizes[index])
                         this.cloneSizes[index] = 1
-                        this.cloneSizes[index + 1] -= extra
                         htmlInteraction.setInnerHtml(`cell${index + 1}`, "Size: " + this.cloneSizes[index])
                     }
-                        
+                    
+                    
                     
                 }
             });
+            this.cloneSizes.forEach((element, index) => {
+                if (this.cloneSizes[index] > 1 && extra != 0) {
+                    if (this.cloneSizes[index] - extra > 0) {
+                        this.cloneSizes[index] -= extra
+                    } else{
+                        extra -= (this.cloneSizes[index]) 
+                        this.cloneSizes[index] = 1
+                    }   
+                }
+                virus.tSize += this.cloneSizes[index]
+            })
+
+
          virus.size = this.cloneSizes[0] 
         } else{
             this.size -= value
@@ -108,9 +122,9 @@ var virus = {
 
 
     setEvoPoints : function(){
-        if (this.size >= this.evoLimit){
-            //this.evoPoints += 100000;
-            this.evoPoints += this.evoAmount;
+        if (this.tSize >= this.evoLimit){
+        this.evoPoints += 100000;
+            //this.evoPoints += this.evoAmount;
             virus.removeSize(this.evoLimit)
             //virus.setVirusSize(this.size - this.evoLimit)
             htmlInteraction.setInnerHtml("evo", "You have " + this.evoPoints + " evolution points.")
