@@ -66,7 +66,7 @@ var combat = {
     message3 : "",
     message4: "",
     message5: "",
-    enemyId : 6,
+    enemyId : 1,
 
 
     initCombat : function(){
