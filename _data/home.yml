@@ -13,9 +13,25 @@ navbar_entries:
 
 
 project_entries:
+  - title: Lake Nixon Planner
+    url: https://github.com/iang0319/lake_nixon_final
+    desc: A mobile app created for the Lake Nixon Summer Camp.
+
+  - title: GIS Portfolio
+    url: http://mapping21centuryhdx.siteleaf.net/
+    desc: A website created to display GIS data formulated by Hendrix College students.
+
+  - title: Hendrix Arboreteum
+    url: https://hendrix-arboretum.azurewebsites.net/
+    desc: A website created to help display the data collected about the trees on Hendrix College Campus.
+
+  - title: Growth
+    url: https://connorescajeda.github.io/seniorsem/
+    desc: An idle game based on a virus taking over the world.
+
   - title: Banana Bonanza
     url: https://github.com/connorescajeda/Banana-Bonanza
-    desc: A incremental game about bananas taking over the world
+    desc: An incremental game about bananas taking over the world.
 
   - title: Restaurant Simulator
     url: https://github.com/connorescajeda/Restaurant_Simulator
