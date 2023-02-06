@@ -1,0 +1,6 @@
+---
+layout: post
+title: Week 1 and 2 of Spring 2023
+visible: 0
+---
+It is exciting to be back and working on Disco Tray. My first week wasn't too crazy, I did a little dive into the code base of Hendrix today and got a better understanding of what was happening and then I also created some issues and picked out things that I want to work on. Most of time actually went towards trouble with registrar and classes because I was not allowed to take this as a class a third time. So I spent a ton of time having to sort all of that out but sadly I do have to take more classes so my time is going to be more taken up that I orginally thought it would be which sucks. Over the second week, I made big strides with scripting through python to firebase. I am currently still working on automating the excel file into firebase but I have been able to succesfully put dummy info into firebase from python which is super exciting to have made happen! I hope by next week I have a rough use of something that can take the excel file, pull what we want and put it into firebase!
