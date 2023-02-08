@@ -1,0 +1,6 @@
+---
+layout: post
+title: Week 3 of Spring 2023
+visible: 0
+---
+This week was a good week of progress! I have been able to have a pretty succesfully working form of a python script to pull things from excel and into a firebase database. The biggest issue is going to come on the side of formatting. Many of the events with the Hendrix Today have VERY inconsistent ways of formatting that will make it very difficult to have date/time data. This could be something we have to talk to Communications about and try to get them to have a standard because it could save us a lot of time. This formatting issue is where a lot of issues come form because it is pretty easy to get things to firebase but then we need to pull them from firebase and from there the biggest problem is figuring out how to use it when some things don't have dates or they do but its text and lots of things like that. I will bring these up today (2/8) in our meeting and see where we would like to go from here.
